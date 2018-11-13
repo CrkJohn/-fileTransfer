@@ -1,4 +1,4 @@
-package edu.eci.laboratorio.TranferenciaDeArchivos.Logico;
+package edu.eci.laboratorio.TranferenciaDeArchivos.entites;
 
 /**
  * Hello world!

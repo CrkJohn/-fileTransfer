@@ -2,11 +2,12 @@ package edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion;
 
 import javax.swing.JFrame;
 
+import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.Runtime;
-import edu.eci.laboratorio.TranferenciaDeArchivos.Logico.TransferenciaDeArhivosException;
 
 public class TranferenciaDeArchivosGUI extends JFrame{
 			
