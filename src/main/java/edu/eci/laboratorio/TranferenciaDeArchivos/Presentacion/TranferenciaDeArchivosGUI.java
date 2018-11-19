@@ -72,7 +72,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
  		*/
 		centro();
 		setResizable(false);
-		//IniciarTA();
+		IniciarTA();
 		setFocusable(false);
 	
 	}
@@ -84,7 +84,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	}
  
 	
-	private void IniciarJuego() throws TransferenciaDeArhivosException {
+	private void IniciarTA() throws TransferenciaDeArhivosException {
 		irPanel("Principal","");
 	}
  
