@@ -5,15 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import aplicacion.DuckHuntException;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
-import presentacion.Controles;
-import presentacion.FinDelJuego;
-import presentacion.PanelInicial;
-import presentacion.PanelJuego;
-import presentacion.PanelJuegoMultiplayer;
-import presentacion.PanelOpciones;
-
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -40,18 +32,16 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 
 	
 	
-	public TranferenciaDeArchivosGUI() {
-		
+	private TranferenciaDeArchivosGUI() throws TransferenciaDeArhivosException {
 			prepareElementos();
 			prepareAcciones();
 			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	
-	 
+			setVisible(true);
 	}
 	
 	
 	private void prepareElementos() throws TransferenciaDeArhivosException {
-		setTitle("POODuck");
+		setTitle("Tranferencia de archivos");
 		layout = new CardLayout();
 		this.getContentPane().setLayout(new CardLayout());
 		super.setMinimumSize(sreenMinimo);
@@ -126,7 +116,9 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	}
 
 	public static void main(String[] args) throws TransferenciaDeArhivosException, IOException {
-		String url = "src\\main\\java\\edu\\eci\\laboratorio\\Archivos\\p.bat";
+		
+		TranferenciaDeArchivosGUI tfGUI = new TranferenciaDeArchivosGUI();
+		/*String url = "src\\main\\java\\edu\\eci\\laboratorio\\Archivos\\p.bat";
 		PrintWriter writer = new PrintWriter(url, "UTF-8");
 		
 		writer.println("@echo off");
@@ -135,7 +127,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		
 		writer.close();
 		Runtime.getRuntime().exec("cmd /c start "+url+ " /V:OFF");
-		System.out.println("Se logro");
+		System.out.println("Se logro");*/
 		
 
 		
