@@ -29,6 +29,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	private PanelAgregarComputador panelJuego;
 	private PanelAgregarSalon panelOpciones;
 	private PanelAgregarProfesor panelJuegoMultiplayer;
+	private PanelTranferencia panelTranferencia;
 
 	
 	
@@ -48,22 +49,25 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		principal = new JPanel(layout);
 		setLocationRelativeTo(null);
 		add(principal);
-		/*panelInicial =  new PanelInicial(this);
-		panelOpciones = new PanelOpciones(this);
+		panelTranferencia =  new PanelTranferencia(this);
+		/*panelOpciones = new PanelOpciones(this);
 		controles = new Controles(this);
 		panelJuego = new PanelJuego(this); 
 		panelJuegoMultiplayer  = new PanelJuegoMultiplayer(this);
- 
-		principal.add(panelInicial,"Principal");
-		principal.add(panelJuegoMultiplayer, "Multiplayer");
+ 		*/
+		principal.add(panelTranferencia,"Principal");
+		/*principal.add(panelJuegoMultiplayer, "Multiplayer");
 		principal.add(controles,"Controles");
 		principal.add(panelJuego, "Juego");
 		principal.add(panelOpciones, "Opciones");
  		*/
 		centro();
+
+
 		setResizable(false);
 		IniciarTA();
 		setFocusable(false);
+		setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
 	
 	}
 	
@@ -75,16 +79,12 @@ public class TranferenciaDeArchivosGUI extends JFrame{
  
 	
 	private void IniciarTA() throws TransferenciaDeArhivosException {
-		irPanel("Principal","");
+		irPanel("Principal");
 	}
- 
-	public void irPanel(String src, String type) throws TransferenciaDeArhivosException {
-		layout.show(principal, src);
-	}
- 
+
  
 	public void irPanel(String src) throws TransferenciaDeArhivosException {
-		layout.show(principal, src);
+		layout.show(principal,src);
 	}
  
  
@@ -98,7 +98,6 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	}
 
 	public void salir() {
-		//System.out.println(getWidth() + " " + getHeight());
 		if (JOptionPane.showConfirmDialog(null, "¿Esta seguro de salir?", "Salir",
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 			setVisible(false);
@@ -126,7 +125,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		writer.println("");
 		
 		writer.close();
-		Runtime.getRuntime().exec("cmd /c start "+url+ " /V:OFF");
+		Runtime.getRuntime().exec("cmd /c start "+url+ " ");
 		System.out.println("Se logro");*/
 		
 
