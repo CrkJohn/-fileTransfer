@@ -74,35 +74,31 @@ public class SQLPersistence implements GeneralPersistence {
 		
 	}
 
-	public ArrayList<Computador> getComputers() throws SQLException {
+	public ArrayList<Computador> getComputadores() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<Salon> getClassrooms() throws SQLException {
+	public ArrayList<Salon> getSalones() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String getIDClassroom(String name) throws SQLException {
+	public String getSalonNombre(String id) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String getNameClassroom(String id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void deleteComputer(String Name) throws SQLException {
+	public void eliminarComputador(String Name) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void deleteClassroom(String Name) throws SQLException {
+	public void eliminarSalon(String Name) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
+
 
     /*
      * @Override

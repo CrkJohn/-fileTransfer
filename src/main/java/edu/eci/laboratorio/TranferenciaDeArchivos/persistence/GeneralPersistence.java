@@ -19,15 +19,14 @@ public interface GeneralPersistence {
     
     public void cambiarNombreSalon(String oldName, String newName) throws SQLException;
     
-    public ArrayList<Computador> getComputers() throws SQLException;
+    public ArrayList<Computador> getComputadores() throws SQLException;
     
-    public ArrayList<Salon> getClassrooms() throws SQLException;
+    public ArrayList<Salon> getSalones() throws SQLException;
     
-    public String getIDClassroom(String name) throws SQLException;
     
-    public String getNameClassroom(String id) throws SQLException;
+    public String getSalonNombre(String id) throws SQLException;
     
-    public void deleteComputer(String Name) throws SQLException;
+    public void eliminarComputador(String Name) throws SQLException;
     
-    public void deleteClassroom(String Name) throws SQLException;
+    public void eliminarSalon(String Name) throws SQLException;
 }
