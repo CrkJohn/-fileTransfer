@@ -33,16 +33,20 @@ public class PanelTranferencia extends JPanel{
 	private JMenuItem modificarLaboratorio;
 	private JMenuItem elimniarLaboratorio;
 	private JFileChooser newFile;
-	private Thread t;
-	private boolean duckDead[];
-	private KeyListener m;
-
+	private JMenu enviarArchivo;
+	private JMenuItem enviarArchivos;
+	private JMenuItem enviarCarpeta;
+	private JMenu traerComponente;
+	private JMenuItem traerArchivos;
+	private JMenuItem traerCarpeta;
+	private Image fondo;
+	
 	public PanelTranferencia(TranferenciaDeArchivosGUI tranferenciaDeArchivosGUI) {
 		super();
-		
+		System.out.println("Entro");
 		this.frame = frame;
+		prepareElementos();
 		setLayout(new BorderLayout());
-		
 		preparandoMenu();
 		prepareAcciones();
 		setOpaque(false);
@@ -50,11 +54,21 @@ public class PanelTranferencia extends JPanel{
 	}
 
 
+	private void prepareElementos() {
+		fondo = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/fondo.png"));
+	}
+	
+
+	@Override
+	public void paint(Graphics g) {
+		//g.drawImage(fondo, 0, 0, frame.getWidth(), frame.getHeight(), this);
+		super.paint(g);
+	}
+
 	public void preparandoMenu() {
 		newFile = new JFileChooser();
 		menuBar = new JMenuBar();
-		Font fuenteMenu = new Font("Times New Roman", Font.BOLD, 15);
-		
+		Font fuenteMenu = new Font("Times New Roman", Font.BOLD, 15);	
 		//Computador
 		menuComputador = new JMenu("Computador");
 		menuComputador.setFont(fuenteMenu);
@@ -85,7 +99,27 @@ public class PanelTranferencia extends JPanel{
 		menuBar.add(menuLaboratorio);
 		
 		
+		//Envio
+		enviarArchivo = new JMenu("Enviar");
+		enviarArchivo.setFont(fuenteMenu);
+		enviarArchivos = new JMenuItem("Envio de archivos");
+		enviarArchivos.setFont(fuenteMenu);
+		enviarCarpeta = new JMenuItem("Envio de carpeta");
+		enviarCarpeta.setFont(fuenteMenu);
+		enviarArchivo.add(enviarArchivos);
+		enviarArchivo.add(enviarCarpeta);
+		menuBar.add(enviarArchivo);
 		
+		//Traer componente
+		traerComponente = new JMenu("Traer");
+		traerComponente.setFont(fuenteMenu);
+		traerArchivos = new JMenuItem("Traer  archivos");
+		traerArchivos.setFont(fuenteMenu);
+		traerCarpeta = new JMenuItem("Traer carpetas");
+		traerCarpeta.setFont(fuenteMenu);
+		traerComponente.add(traerArchivos);
+		traerComponente.add(traerCarpeta);
+		menuBar.add(traerComponente);
 
 		
 		

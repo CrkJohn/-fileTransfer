@@ -21,7 +21,7 @@ import java.lang.Runtime;
 
 public class TranferenciaDeArchivosGUI extends JFrame{
 	public static final Dimension sreenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final Dimension sreenMinimo = new Dimension(1281, 744);
+	public static final Dimension sreenMinimo = new Dimension(744, 400);
 	private CardLayout layout;
 	private JPanel menu;
 	private JPanel principal;
