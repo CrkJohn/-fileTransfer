@@ -10,7 +10,7 @@
 ## Diagramas
 
 ### Diagrama clases extendido
-![](https://github.com/CrkJohn/fileTransfer/blob/master/img/DiagramaExtendido.png)
+![](https://github.com/CrkJohn/fileTransfer/blob/master/img/DiagramaExtendidoEntites.png)
 ### Diagrama de base de datos
 
 
