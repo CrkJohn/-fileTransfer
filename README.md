@@ -1,7 +1,9 @@
 
 
-# Tranferencia de archivos
-## Descripción
+# Tranferencia de archivos - Monitoria 2018-2
+
+### Integrantes:
+  John Ibañez
 
 ## Cómo se desarrolo el problema
 
