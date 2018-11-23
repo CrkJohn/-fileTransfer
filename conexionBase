@@ -1,0 +1,4 @@
+host=ec2-23-21-201-12.compute-1.amazonaws.com:5432/d529nli2aarf3p?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&
+dataName=d529nli2aarf3p
+username=hyiilgodbjlqwc
+password=9a93caaf272530b12c3525e1a573c73ead93e30e0ddda06e85141429f52b2cf1
