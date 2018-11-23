@@ -6,6 +6,13 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 import static com.google.inject.Guice.createInjector;
 import com.google.inject.Injector;
 
+import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.ComputadorDAO;
+import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.ProfesorDAO;
+import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.SalonDAO;
+import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISComputadorDAO;
+import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISProfesorDAO;
+import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISSalonDAO;
+
 
 public class ServicesTranferenciaDeArchivosFactory {
 
@@ -22,11 +29,9 @@ public class ServicesTranferenciaDeArchivosFactory {
               protected void initialize() {
                   install(JdbcHelper.PostgreSQL);                        
                   setClassPathResource("mybatis-config.xml");         
-                  /*bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
-                  bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
-                  bind(InteresDAO.class).to(MyBATISInteresDAO.class);
-                  bind(ComentarioDAO.class).to(MyBATISComentarioDAO.class);
-                  bind(ServicesIdeas.class).to(ServicesIdeasImpl.class);*/
+                  bind(ComputadorDAO.class).to(MyBATISComputadorDAO.class);
+                  bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
+                  bind(SalonDAO.class).to(MyBATISSalonDAO.class);
               }
           }
           
