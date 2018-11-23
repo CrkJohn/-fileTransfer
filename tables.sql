@@ -11,8 +11,8 @@ CREATE TABLE Computador (
 
 -- Table: Profesor
 CREATE TABLE Profesor (
-    nombre int  NOT NULL,
-    documento varchar(50)  NOT NULL,
+    nombre varchar(50)   NOT NULL,
+    documento  int NOT NULL,
     correo varchar(50)  NOT NULL,
     CONSTRAINT Profesor_pk PRIMARY KEY (documento)
 );
@@ -28,19 +28,15 @@ CREATE TABLE Salon (
 -- foreign keys
 -- Reference: Salon_Computador (table: Computador)
 ALTER TABLE Computador ADD CONSTRAINT Salon_Computador
-    FOREIGN KEY ()
-    REFERENCES Salon ()  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    FOREIGN KEY (id)
+    REFERENCES Salon (id)  
 ;
 
 -- Reference: Salon_Profesor (table: Salon)
 ALTER TABLE Salon ADD CONSTRAINT Salon_Profesor
-    FOREIGN KEY ()
-    REFERENCES Profesor ()  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
-;
+    FOREIGN KEY (id)
+    REFERENCES Profesor(documento)  ;
 
--- End of file.
-
+-- drop table computador;
+-- drop table salon;
+-- drop table profesor;
