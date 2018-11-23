@@ -3,7 +3,7 @@ Global
 Los usuario deben tener su perfil asignado al login
 
 
-
+![](https://github.com/Proyecto-PDSW/Proyecto/blob/master/img/pagAcudiente.jpeg)
 # Usuario
 
 ## Consultar la información relacianada con las ideas o iniciativas que tienen un estado determinado
