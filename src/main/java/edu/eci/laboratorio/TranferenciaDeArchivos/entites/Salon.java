@@ -4,29 +4,35 @@ import java.util.ArrayList;
 
 public class Salon{
 	
-	ArrayList<Computador> computadoras;
+	
 	int id;
+	String nombre;
 	String descripcion;
+	ArrayList<Computador> pcs;
+	
+	public ArrayList<Computador> getPcs() {
+		return pcs;
+	}
 
+	public void setPcs(ArrayList<Computador> pcs) {
+		this.pcs = pcs;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public Salon(ArrayList<Computador> computadoras, int id){
-		this.id = id;
-		this.computadoras = computadoras;
-	}
-
-	public ArrayList<Computador> getComputadoras() {
-		return computadoras;
-	}
-
-	public void setComputadoras(ArrayList<Computador> computadoras) {
-		this.computadoras = computadoras;
 	}
 
 	public int getId() {

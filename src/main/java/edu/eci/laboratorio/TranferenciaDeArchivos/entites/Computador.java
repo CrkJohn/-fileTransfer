@@ -4,6 +4,8 @@ public class Computador {
 	
 	String nombre;
 	int id;
+	Salon salon;
+
 
 	public Computador(String nombre, int id) {
 		this.nombre = nombre;
@@ -23,5 +25,14 @@ public class Computador {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
 	}
 }

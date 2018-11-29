@@ -3,40 +3,54 @@
 
 -- tables
 -- Table: Computador
-CREATE TABLE Computador (
+CREATE TABLE Computadores (
     id int  NOT NULL,
-    nombre int  NOT NULL,
+    nombre varchar(15)  NOT NULL,
+	id_salon int not null,
     CONSTRAINT Computador_pk PRIMARY KEY (id)
 );
 
--- Table: Profesor
-CREATE TABLE Profesor (
-    nombre varchar(50)   NOT NULL,
-    documento  int NOT NULL,
-    correo varchar(50)  NOT NULL,
-    CONSTRAINT Profesor_pk PRIMARY KEY (documento)
-);
-
--- Table: Salon
-CREATE TABLE Salon (
+CREATE TABLE Salones (
     id int  NOT NULL,
     nombre varchar(50)  NOT NULL,
     descripcion varchar(100)  NOT NULL,
     CONSTRAINT Salon_pk PRIMARY KEY (id)
 );
 
--- foreign keys
--- Reference: Salon_Computador (table: Computador)
-ALTER TABLE Computador ADD CONSTRAINT Salon_Computador
-    FOREIGN KEY (id)
-    REFERENCES Salon (id)  
-;
 
--- Reference: Salon_Profesor (table: Salon)
-ALTER TABLE Salon ADD CONSTRAINT Salon_Profesor
-    FOREIGN KEY (id)
-    REFERENCES Profesor(documento)  ;
+CREATE TABLE SalonesProfesores(
+	id_profesor int not null,
+	id_salones int not null
+);
 
--- drop table computador;
--- drop table salon;
--- drop table profesor;
+
+CREATE TABLE Profesores (
+    nombre varchar(50)   NOT NULL,
+    documento  int NOT NULL,
+    correo varchar(50)  NOT NULL,
+    CONSTRAINT Profesor_pk PRIMARY KEY (documento)
+);
+
+
+
+ALTER TABLE Computadores ADD CONSTRAINT Computadores_Salones
+    FOREIGN KEY (id_salon)
+    REFERENCES salones(id);
+	
+ALTER TABLE  SalonesProfesores  ADD CONSTRAINT SP_Salones
+	FOREIGN KEY (id_salones)
+	REFERENCES Salones(id);
+
+ALTER TABLE  SalonesProfesores ADD CONSTRAINT SP_Profesores
+	FOREIGN KEY (id_profesor)
+	REFERENCES Profesores(documento);
+
+	
+/*
+  drop table profesores;    
+  drop table salones;
+  drop table SalonesProfesores;  
+  drop table computadores;
+ 
+    
+ */

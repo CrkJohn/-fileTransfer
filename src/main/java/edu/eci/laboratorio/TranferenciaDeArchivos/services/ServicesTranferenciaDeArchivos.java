@@ -19,7 +19,6 @@ public boolean agregarComputador(Computador c) throws SQLException;
     public void eliminarSalon(String Name) throws SQLException;
     public ArrayList<Salon> getSalones() throws SQLException;    
     public String getSalonNombre(String id) throws SQLException;
-
     public ArrayList<Computador> getComputadores() throws SQLException;    
     public void eliminarComputador(String Name) throws SQLException;
    
