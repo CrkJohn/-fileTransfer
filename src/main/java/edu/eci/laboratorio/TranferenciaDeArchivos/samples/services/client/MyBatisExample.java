@@ -41,6 +41,7 @@ public class MyBatisExample {
 	    SqlSession sqlss = sessionfact.openSession();      
 	    ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
 	    ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
+          
             SalonMapper usrMapper =  sqlss.getMapper(SalonMapper.class);
             System.out.println("aca");
             System.out.println(usrMapper.getSalones().toString());

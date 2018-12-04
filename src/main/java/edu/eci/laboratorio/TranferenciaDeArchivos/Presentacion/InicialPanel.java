@@ -20,7 +20,9 @@ public class InicialPanel extends javax.swing.JPanel {
     private TranferenciaDeArchivosGUI frame;
 
     public InicialPanel(TranferenciaDeArchivosGUI aThis) {
+        
         this.frame = aThis;
+        
         initComponents();
         prepareAcciones();
     }
