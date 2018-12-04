@@ -2,7 +2,7 @@ package edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion;
 
 import com.google.inject.Inject;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
-import edu.eci.laboratorio.TranferenciaDeArchivos.services.impl.ServicesTranferenciaDeArchivosImpl;
+import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.impl.ServicesTranferenciaDeArchivosImpl;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class RecibirPanel extends javax.swing.JPanel {
 
     
-    @Inject
+
     private ServicesTranferenciaDeArchivosImpl services;
     
   
@@ -22,8 +22,10 @@ public class RecibirPanel extends javax.swing.JPanel {
     
     public RecibirPanel(TranferenciaDeArchivosGUI frame) {
         this.frame = frame;
+        services = new ServicesTranferenciaDeArchivosImpl();
         initComponents();
-        //prepareElementos();
+        prepareElementos();
+       
         
     }
 
@@ -77,7 +79,9 @@ public class RecibirPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void prepareElementos() {
+         System.out.println("Aqui");
         ArrayList<Salon> laboratorios = services.getSalones();
+         System.out.println("Aqui");
         for (Iterator<Salon> iterator = laboratorios.iterator(); iterator.hasNext();) {
             Salon next = iterator.next();
             jComboBox1.addItem(next.getNombre());

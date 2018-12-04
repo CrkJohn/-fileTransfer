@@ -34,10 +34,10 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	
 	
 	private TranferenciaDeArchivosGUI() throws TransferenciaDeArhivosException {
-			prepareElementos();
-			prepareAcciones();
-			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-			setVisible(true);
+                prepareElementos();
+		prepareAcciones();
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                setVisible(true);
 	}
 	
 	

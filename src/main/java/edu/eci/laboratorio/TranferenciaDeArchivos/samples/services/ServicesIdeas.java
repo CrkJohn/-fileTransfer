@@ -1,4 +1,4 @@
-package edu.eci.laboratorio.TranferenciaDeArchivos.services;
+package edu.eci.laboratorio.TranferenciaDeArchivos.samples.services;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -10,8 +10,7 @@ import org.apache.ibatis.exceptions.PersistenceException;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 
-public interface ServicesTranferenciaDeArchivos { 
-                 
+public interface ServicesIdeas {                  
 
     public boolean agregarComputador(Computador c) throws SQLException;
     public boolean agregarSalon(Salon c) throws SQLException; 

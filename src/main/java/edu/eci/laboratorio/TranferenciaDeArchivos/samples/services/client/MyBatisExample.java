@@ -1,9 +1,9 @@
-package edu.eci.laboratorio.TranferenciaDeArchivos.services.client;
+package edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.client;
 
 
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.mappers.*;
-import edu.eci.laboratorio.TranferenciaDeArchivos.services.ServicesTranferenciaDeArchivos;
-import edu.eci.laboratorio.TranferenciaDeArchivos.services.ServicesTranferenciaDeArchivosFactory;
+import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.ServicesIdeas;
+import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.ServicesIdeasFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -39,9 +39,9 @@ public class MyBatisExample {
 		
             SqlSessionFactory sessionfact = getSqlSessionFactory();
 	    SqlSession sqlss = sessionfact.openSession();      
-	    ServicesTranferenciaDeArchivosFactory servicesFactory = ServicesTranferenciaDeArchivosFactory.getInstance();
-	    ServicesTranferenciaDeArchivos ideasServices = servicesFactory.getTranferenciaServices();
-	    SalonMapper usrMapper =  sqlss.getMapper(SalonMapper.class);
+	    ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
+	    ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
+            SalonMapper usrMapper =  sqlss.getMapper(SalonMapper.class);
             System.out.println("aca");
             System.out.println(usrMapper.getSalones().toString());
              

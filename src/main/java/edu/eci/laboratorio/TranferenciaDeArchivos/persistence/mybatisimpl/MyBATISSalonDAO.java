@@ -26,6 +26,7 @@ public class MyBATISSalonDAO implements SalonDAO{
 
 
 	public ArrayList<Salon> getSalones() throws PersistenceException {
+           
 		return salonMapper.getSalones();
 	}
 

@@ -1,4 +1,4 @@
-package edu.eci.laboratorio.TranferenciaDeArchivos.services.impl;
+package edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.impl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,11 +8,11 @@ import com.google.inject.Inject;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.*;
-import edu.eci.laboratorio.TranferenciaDeArchivos.services.ServicesTranferenciaDeArchivos;
+import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.ServicesIdeas;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServicesTranferenciaDeArchivosImpl implements ServicesTranferenciaDeArchivos {
+public class ServicesTranferenciaDeArchivosImpl implements ServicesIdeas {
 
     @Inject
     private ComputadorDAO computadorDAO;
@@ -42,7 +42,9 @@ public class ServicesTranferenciaDeArchivosImpl implements ServicesTranferenciaD
     }
 
     public ArrayList<Salon> getSalones() {
+        
         try {
+            System.err.println(salonDAO==null);
             return salonDAO.getSalones();
         } catch (Exception ex) {
             ex.getStackTrace();
