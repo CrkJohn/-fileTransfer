@@ -15,8 +15,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.mappers.ComputadorMapper;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.mappers.SalonMapper;
-import edu.eci.laboratorio.TranferenciaDeArchivos.services.ServicesTranferenciaDeArchivos;
+
 import edu.eci.laboratorio.TranferenciaDeArchivos.services.ServicesTranferenciaDeArchivosFactory;
+import edu.eci.laboratorio.TranferenciaDeArchivos.services.ServicesTranferenciaDeArchivos;
 
 
 public class MyBatisExample {
@@ -41,7 +42,7 @@ public class MyBatisExample {
             SqlSessionFactory sessionfact = getSqlSessionFactory();
 	      SqlSession sqlss = sessionfact.openSession();	      
 	      ServicesTranferenciaDeArchivosFactory servicesFactory = ServicesTranferenciaDeArchivosFactory.getInstance();
-	      ServicesTranferenciaDeArchivos ideasServices = servicesFactory.getIdeasServices();
+	      ServicesTranferenciaDeArchivos ideasServices = servicesFactory.getTranferenciaServices();
 	      /*SalonMapper usrMapper =  sqlss.getMapper(SalonMapper.class);
 	      System.out.println(usrMapper.getSalones());
               */

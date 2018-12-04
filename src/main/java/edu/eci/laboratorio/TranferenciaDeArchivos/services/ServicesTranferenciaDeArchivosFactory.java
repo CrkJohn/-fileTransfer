@@ -51,7 +51,7 @@ public class ServicesTranferenciaDeArchivosFactory {
          });*/
     }
 
-    public ServicesTranferenciaDeArchivos getIdeasServices(){
+    public ServicesTranferenciaDeArchivos getTranferenciaServices(){
         return injector.getInstance(ServicesTranferenciaDeArchivos.class);   
     }
    
