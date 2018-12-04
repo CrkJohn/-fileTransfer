@@ -1,10 +1,10 @@
 package edu.eci.laboratorio.TranferenciaDeArchivos.services;
 
-
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 import static com.google.inject.Guice.createInjector;
 import com.google.inject.Injector;
+
 
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.ComputadorDAO;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.ProfesorDAO;
@@ -12,6 +12,7 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.SalonDAO;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISComputadorDAO;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISProfesorDAO;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISSalonDAO;
+import edu.eci.laboratorio.TranferenciaDeArchivos.services.*;
 
 
 public class ServicesTranferenciaDeArchivosFactory {

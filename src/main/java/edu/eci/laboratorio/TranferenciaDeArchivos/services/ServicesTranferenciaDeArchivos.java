@@ -11,6 +11,7 @@ import org.apache.ibatis.exceptions.PersistenceException;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 public interface ServicesTranferenciaDeArchivos { 
+                 
 
 public boolean agregarComputador(Computador c) throws SQLException;
     

@@ -9,56 +9,60 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.*;
 import edu.eci.laboratorio.TranferenciaDeArchivos.services.ServicesTranferenciaDeArchivos;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class ServicesTranferenciaDeArchivosImpl implements ServicesTranferenciaDeArchivos{
-	
-	@Inject
-	private ComputadorDAO computadorDAO;
-	@Inject
-	private SalonDAO salonDAO;
-	@Inject
-	private ProfesorDAO profesorDAO;
-	
-	
+public class ServicesTranferenciaDeArchivosImpl implements ServicesTranferenciaDeArchivos {
 
-	public boolean agregarComputador(Computador c) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Inject
+    private ComputadorDAO computadorDAO;
+    @Inject
+    private SalonDAO salonDAO;
+    @Inject
+    private ProfesorDAO profesorDAO;
 
-	public boolean agregarSalon(Salon c) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean agregarComputador(Computador c) throws SQLException {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public void cambiarNombreSalon(String oldName, String newName) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean agregarSalon(Salon c) throws SQLException {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public void eliminarSalon(String Name) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
+    public void cambiarNombreSalon(String oldName, String newName) throws SQLException {
+        // TODO Auto-generated method stub
 
-	public ArrayList<Salon> getSalones() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public String getSalonNombre(String id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void eliminarSalon(String Name) throws SQLException {
+        // TODO Auto-generated method stub
 
-	public ArrayList<Computador> getComputadores() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public void eliminarComputador(String Name) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
+    public ArrayList<Salon> getSalones() {
+        try {
+            return salonDAO.getSalones();
+        } catch (Exception ex) {
+            ex.getStackTrace();
+        }
+        return null;
+    }
+
+    public String getSalonNombre(String id) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ArrayList<Computador> getComputadores() throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void eliminarComputador(String Name) throws SQLException {
+        // TODO Auto-generated method stub
+
+    }
 
 }

@@ -10,7 +10,7 @@
     
 	
     <typeAliases>
-        <typeAlias type='edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador' alias='Comptuador'/>
+        <typeAlias type='edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador' alias='Computador'/>
         <typeAlias type='edu.eci.laboratorio.TranferenciaDeArchivos.entites.Profesor' alias='Profesor'/>
         <typeAlias type='edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon' alias='Salon'/>
     </typeAliases>
@@ -28,7 +28,7 @@
         </environment>
     </environments>
 	
-	<mappers>
+    <mappers>
     	<mapper resource="mappers/ComentarioMapper.xml"></mapper>
     	<mapper resource="mappers/SalonMapper.xml"></mapper>
     	<mapper resource="mappers/ProfesorMapper.xml"></mapper>

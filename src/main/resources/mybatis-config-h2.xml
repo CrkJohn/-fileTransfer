@@ -11,15 +11,10 @@
     </settings>
     
 	
-	
-    <typeAliases>
-        <typeAlias type='edu.eci.pdsw.entities.Area' alias='Area'/>
-        <typeAlias type='edu.eci.pdsw.entities.Comentario' alias='Comentario'/>
-        <typeAlias type='edu.eci.pdsw.entities.Estado' alias='Estado'/>
-        <typeAlias type='edu.eci.pdsw.entities.Iniciativa' alias='Iniciativa'/>
-        <typeAlias type='edu.eci.pdsw.entities.Interes' alias='Interes'/>
-        <typeAlias type='edu.eci.pdsw.entities.Rol' alias='Rol'/>
-        <typeAlias type='edu.eci.pdsw.entities.Usuario' alias='Usuario'/>
+ <typeAliases>
+        <typeAlias type='edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador' alias='Computador'/>
+        <typeAlias type='edu.eci.laboratorio.TranferenciaDeArchivos.entites.Profesor' alias='Profesor'/>
+        <typeAlias type='edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon' alias='Salon'/>
     </typeAliases>
 
 	<environments default="development">
@@ -34,12 +29,10 @@
         </environment>
     </environments>
 			
-	<mappers>
-    	<mapper resource="mappers/UsuarioMapper.xml"></mapper> 
-    	<mapper resource="mappers/IniciativaMapper.xml"></mapper>
-    	<mapper resource="mappers/AreaMapper.xml"></mapper>
-    	<mapper resource="mappers/InteresMapper.xml"></mapper>
-    	<mapper resource="mappers/ComentarioMapper.xml"></mapper>              
+    <mappers>
+    	<mapper resource="mappers/ComentarioMapper.xml"></mapper>
+    	<mapper resource="mappers/SalonMapper.xml"></mapper>
+    	<mapper resource="mappers/ProfesorMapper.xml"></mapper>
     </mappers> 
 
 </configuration>

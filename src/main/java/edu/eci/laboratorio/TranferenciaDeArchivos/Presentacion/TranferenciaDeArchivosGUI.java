@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion.*;
 
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
 import java.awt.CardLayout;
@@ -25,11 +26,10 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	private CardLayout layout;
 	private JPanel menu;
 	private JPanel principal;
-	private JPanel  panelInicial;
-	private PanelAgregarComputador panelJuego;
-	private PanelAgregarSalon panelOpciones;
-	private PanelAgregarProfesor panelJuegoMultiplayer;
-	private PanelTranferencia panelTranferencia;
+	private InicialPanel  panelInicial;
+        private EnviarPanel enviarPanel;
+        private RecibirPanel recibirPanel;
+	private InicialPanel panelTranferencia;
 
 	
 	
@@ -44,35 +44,25 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	private void prepareElementos() throws TransferenciaDeArhivosException {
 		setTitle("Tranferencia de archivos");
 		layout = new CardLayout();
-		this.getContentPane().setLayout(new CardLayout());
-		super.setMinimumSize(sreenMinimo);
-		principal = new JPanel(layout);
+		this.getContentPane().setLayout(new CardLayout());		
+		principal = new JPanel(layout);               
 		setLocationRelativeTo(null);
 		add(principal);
-		panelTranferencia =  new PanelTranferencia(this);
-		/*panelOpciones = new PanelOpciones(this);
-		controles = new Controles(this);
-		panelJuego = new PanelJuego(this); 
-		panelJuegoMultiplayer  = new PanelJuegoMultiplayer(this);
- 		*/
-		principal.add(panelTranferencia,"Principal");
-		/*principal.add(panelJuegoMultiplayer, "Multiplayer");
-		principal.add(controles,"Controles");
-		principal.add(panelJuego, "Juego");
-		principal.add(panelOpciones, "Opciones");
- 		*/
+		panelTranferencia =  new InicialPanel(this);	
+                recibirPanel = new RecibirPanel(this);
+                enviarPanel = new EnviarPanel(this);                
+		principal.add(panelTranferencia,"Principal");	                
+		principal.add(enviarPanel,"Enviar");	
+		principal.add(recibirPanel,"Recibir");	
 		centro();
-
-
 		setResizable(false);
 		IniciarTA();
 		setFocusable(false);
-		setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
-	
+		//setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());	
 	}
 	
 	private void centro() {
-		int xEsquina = 1000, yEsquina = 750;
+		int xEsquina = 1000, yEsquina = 500;
 		setSize(xEsquina, yEsquina);
 		setLocationRelativeTo(null);
 	}

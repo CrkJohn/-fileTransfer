@@ -4,6 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.mappers.SalonMapper">
-
+    
+   
+    
+    
+        <select id = "getSalones" resultMap="salonesResult">            
+                SELECT sa.id  as salonID,
+                        sa.nombre as salonNombre,
+                        sa.descripcion as salonDescripcion
+                FROM salones as sa;		
+        </select>
+        
+        <select id = "getSalonNombre" resultMap="salonesResult">            
+                SELECT sa.id  as salonID,
+                        sa.nombre as salonNombre,
+                        sa.descripcion as salonDescripcion
+                FROM salones as sa
+                WHERE sa.nombre = #{id};		
+        </select>
+        
+       <insert id="agregarSalon">
+		INSERT INTO Salon(id, nombre, descripcion)
+		VALUES(#{salon.id},#{salon.nombre},#{salon.descripcion});
+	</insert>
+        
+        <update id = "cambiarNombreSalon">
+            update SALONES set nombre = #{newName} where nombre = #{oldName};            
+        </update>
+        
+        <resultMap id="salonesResult" type="Salon">
+		<id property="id" column="salonID"></id>
+		<result property="nombre" column="salonNombre"></result>
+		<result property="descripcion" column="salonDescripcion"></result>		
+	</resultMap>
+        
+        
 	
 </mapper>

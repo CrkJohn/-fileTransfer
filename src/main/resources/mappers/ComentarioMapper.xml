@@ -15,14 +15,14 @@
 		FROM 
 			computadores as pc, salones as sa
 		WHERE pc.id_salon=sa.id;
-
 				
 	</select>
 	
 	<resultMap type="Computador" id="ComputadorResult">
 		<id property='id' column='idComputador'/>
-		<result property='nombre' column='nombreComputador'/>
-		<association property="salon" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
+		<result property='nombre' column='nombreComputador'/>	
+                <association property="salon" javaType="Salon" resultMap="edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.mappers.SalonMapper.salonesResult"></association>
+
 		
 	
 	</resultMap>

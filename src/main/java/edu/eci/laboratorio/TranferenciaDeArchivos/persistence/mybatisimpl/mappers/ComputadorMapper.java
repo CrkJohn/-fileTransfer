@@ -10,5 +10,4 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 
 public interface ComputadorMapper {
     public ArrayList<Computador> getComputadores() throws PersistenceException;    
-    public void eliminarComputador(@Param("Name") String Name)throws PersistenceException;
 }

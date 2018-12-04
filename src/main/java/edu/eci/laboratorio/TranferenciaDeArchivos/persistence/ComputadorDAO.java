@@ -9,5 +9,4 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 
 public interface  ComputadorDAO {
     public ArrayList<Computador> getComputadores() throws PersistenceException;    
-    public void eliminarComputador(String Name)throws PersistenceException;
 }

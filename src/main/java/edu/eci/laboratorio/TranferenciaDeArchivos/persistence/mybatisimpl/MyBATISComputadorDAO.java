@@ -14,10 +14,7 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.mapper
 public class MyBATISComputadorDAO implements ComputadorDAO{
 
 	
-	/*
-	 * 
-	 * Inject
-	 */
+	@Inject
 	private ComputadorMapper computadorMapper;
 	
 	
@@ -25,9 +22,6 @@ public class MyBATISComputadorDAO implements ComputadorDAO{
 		return computadorMapper.getComputadores();
 	}
 
-	public void eliminarComputador(String Name) throws PersistenceException {
-		computadorMapper.eliminarComputador(Name);
-	}
 	
 	
 }
