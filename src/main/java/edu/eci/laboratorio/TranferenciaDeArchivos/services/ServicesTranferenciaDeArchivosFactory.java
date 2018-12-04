@@ -12,7 +12,7 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.SalonDAO;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISComputadorDAO;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISProfesorDAO;
 import edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.MyBATISSalonDAO;
-import edu.eci.laboratorio.TranferenciaDeArchivos.services.*;
+
 
 
 public class ServicesTranferenciaDeArchivosFactory {
@@ -25,14 +25,14 @@ public class ServicesTranferenciaDeArchivosFactory {
 
     private  ServicesTranferenciaDeArchivosFactory() {
     	  injector = createInjector(new XMLMyBatisModule() {
-
-              @Override
+             @Override
               protected void initialize() {
                   install(JdbcHelper.PostgreSQL);                        
                   setClassPathResource("mybatis-config.xml");         
                   bind(ComputadorDAO.class).to(MyBATISComputadorDAO.class);
-                  bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
                   bind(SalonDAO.class).to(MyBATISSalonDAO.class);
+                  bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
+                 
               }
           }
           

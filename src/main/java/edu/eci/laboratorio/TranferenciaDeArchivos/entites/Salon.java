@@ -3,7 +3,7 @@ package edu.eci.laboratorio.TranferenciaDeArchivos.entites;
 import java.util.ArrayList;
 
 public class Salon{
-	
+
 	
 	int id;
 	String nombre;
@@ -42,6 +42,13 @@ public class Salon{
 	public void setId(int id) {
 		this.id = id;
 	}
+        
+        
+        @Override
+        public String toString() {
+            return "Salon{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", pcs=" + pcs + '}';
+        }
+	
 	
 	
 

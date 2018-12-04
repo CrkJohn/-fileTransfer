@@ -6,7 +6,8 @@ public class Computador {
 	int id;
 	Salon salon;
 
-
+  
+	
 	public Computador(String nombre, int id) {
 		this.nombre = nombre;
 	}
@@ -35,4 +36,12 @@ public class Computador {
 	public void setSalon(Salon salon) {
 		this.salon = salon;
 	}
+        
+        @Override
+        public String toString() {
+            return "Computador{" + "nombre=" + nombre + ", id=" + id + ", salon=" + salon + '}';
+        }
+
+
+    
 }

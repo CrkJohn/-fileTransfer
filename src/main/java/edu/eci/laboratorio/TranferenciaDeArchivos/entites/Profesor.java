@@ -25,5 +25,12 @@ public class Profesor{
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}	
+
+        @Override
+        public String toString() {
+            return "Profesor{" + "salones=" + salones + ", nombre=" + nombre + ", documento=" + documento + '}';
+        }
+        
+        
 }
 	
