@@ -145,7 +145,6 @@ public class InicialPanel extends javax.swing.JPanel {
 
     private void prepareAcciones() {
         ActionListener recibirAccion = new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     recibir();
@@ -157,7 +156,6 @@ public class InicialPanel extends javax.swing.JPanel {
         recibir.addActionListener(recibirAccion);
 
         ActionListener enviarAccion = new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     enviar();
