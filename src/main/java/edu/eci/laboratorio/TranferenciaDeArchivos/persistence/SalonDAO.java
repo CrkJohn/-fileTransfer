@@ -12,5 +12,5 @@ public interface SalonDAO{
     public boolean agregarSalon(Salon c) throws PersistenceException; 
     public void cambiarNombreSalon(String oldName, String newName)throws PersistenceException;    
     public ArrayList<Salon> getSalones() throws PersistenceException;    
-    public String getSalonNombre(String id) throws PersistenceException;
+    public Salon getSalonNombre(String id) throws PersistenceException;
 }

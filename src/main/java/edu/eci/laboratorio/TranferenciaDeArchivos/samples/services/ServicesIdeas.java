@@ -16,7 +16,7 @@ public interface ServicesIdeas {
     public boolean agregarSalon(Salon c) throws SQLException; 
     public void cambiarNombreSalon(String oldName, String newName) throws SQLException;    
     public ArrayList<Salon> getSalones() throws SQLException;    
-    public String getSalonNombre(String id) throws SQLException;
+    public Salon getSalonNombre(String id) throws SQLException;
     public ArrayList<Computador> getComputadores() throws SQLException;    
     
 

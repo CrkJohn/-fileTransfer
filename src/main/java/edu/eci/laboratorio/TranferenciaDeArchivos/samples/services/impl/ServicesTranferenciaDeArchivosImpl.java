@@ -52,9 +52,8 @@ public class ServicesTranferenciaDeArchivosImpl implements ServicesIdeas {
         return null;
     }
 
-    public String getSalonNombre(String id) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+    public Salon getSalonNombre(String id) throws SQLException {
+        return salonDAO.getSalonNombre(id);
     }
 
     public ArrayList<Computador> getComputadores() throws SQLException {

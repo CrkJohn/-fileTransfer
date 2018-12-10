@@ -20,7 +20,7 @@
                         sa.nombre as salonNombre,
                         sa.descripcion as salonDescripcion
                 FROM salones as sa
-                WHERE sa.nombre = #{id};		
+                WHERE salonNombre, = #{id};		
         </select>
         
        <insert id="agregarSalon">

@@ -11,5 +11,5 @@ public interface SalonMapper {
     public boolean agregarSalon(@Param("salon") Salon c) throws PersistenceException; 
     public void cambiarNombreSalon(@Param("oldName")String oldName,@Param("newName")String newName)throws PersistenceException;    
     public ArrayList<Salon> getSalones() throws PersistenceException;    
-    public String getSalonNombre(@Param("id") String id) throws PersistenceException;
+    public Salon getSalonNombre(@Param("id") String id) throws PersistenceException;
 }

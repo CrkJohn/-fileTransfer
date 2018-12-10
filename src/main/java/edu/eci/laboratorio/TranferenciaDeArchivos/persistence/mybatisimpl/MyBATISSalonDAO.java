@@ -30,9 +30,8 @@ public class MyBATISSalonDAO implements SalonDAO{
 		return salonMapper.getSalones();
 	}
 
-	public String getSalonNombre(String id) throws PersistenceException {
-		// TODO Auto-generated method stub
-		return null;
+	public Salon getSalonNombre(String id) throws PersistenceException {
+		return salonMapper.getSalonNombre(id);
 	}
 
 }

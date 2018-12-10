@@ -35,7 +35,7 @@ public class MyBatisExample {
 		return sqlSessionFactory;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
             SqlSessionFactory sessionfact = getSqlSessionFactory();
 	    SqlSession sqlss = sessionfact.openSession();      
@@ -43,7 +43,8 @@ public class MyBatisExample {
 	    ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
           
             SalonMapper usrMapper =  sqlss.getMapper(SalonMapper.class);
-            System.out.println("aca");
+            
+            System.out.println(ideasServices.getSalonNombre("prueba"));
             System.out.println(usrMapper.getSalones().toString());
              
             sqlss.commit();
