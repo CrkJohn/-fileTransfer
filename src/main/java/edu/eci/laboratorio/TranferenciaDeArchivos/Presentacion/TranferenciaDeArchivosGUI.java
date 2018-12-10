@@ -111,7 +111,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 
 	public static void main(String[] args) throws TransferenciaDeArhivosException, IOException, SQLException {
 		
-                    		TranferenciaDeArchivosGUI tfGUI = new TranferenciaDeArchivosGUI();
+                 TranferenciaDeArchivosGUI tfGUI = new TranferenciaDeArchivosGUI();
 		/*String url = "src\\main\\java\\edu\\eci\\laboratorio\\Archivos\\p.bat";
 		PrintWriter writer = new PrintWriter(url, "UTF-8");
 		
