@@ -226,7 +226,7 @@ public class EnviarPanel extends javax.swing.JPanel {
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
                 for(Computador c : salones.getPcs()){
-                        String tmp = String.format("xcopy /b %s \\%s\\Sistemas\\Temp",urlCarpeta,c.getNombre());
+                        String tmp = String.format("xcopy /b %s \\\\%s\\Sistemas\\Temp",urlCarpeta,c.getNombre());
                         writer.println(tmp);		
                 }
                 writer.close();
