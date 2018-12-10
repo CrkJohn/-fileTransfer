@@ -57,8 +57,8 @@ public class ServicesTranferenciaDeArchivosImpl implements ServicesIdeas {
     }
 
     public ArrayList<Computador> getComputadores() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        return computadorDAO.getComputadores();
+            
     }
 
     public void eliminarComputador(String Name) throws SQLException {

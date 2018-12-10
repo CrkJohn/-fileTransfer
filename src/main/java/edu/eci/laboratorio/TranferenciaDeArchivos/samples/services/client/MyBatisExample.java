@@ -45,7 +45,7 @@ public class MyBatisExample {
             SalonMapper usrMapper =  sqlss.getMapper(SalonMapper.class);
             
             System.out.println(ideasServices.getSalonNombre("prueba"));
-            System.out.println(usrMapper.getSalones().toString());
+            System.out.println(ideasServices.getComputadores());
              
             sqlss.commit();
 	    sqlss.close();

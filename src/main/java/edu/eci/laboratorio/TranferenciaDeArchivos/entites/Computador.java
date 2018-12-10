@@ -4,13 +4,17 @@ public class Computador {
 	
 	String nombre;
 	int id;
-	Salon salon;
 
-  
-	
-	public Computador(String nombre, int id) {
-		this.nombre = nombre;
-	}
+        public Computador(String nombre, int id) {
+            this.nombre = nombre;
+            this.id = id;
+        }
+        public Computador() {
+            
+        }
+        
+
+
 
 	public String getNombre() {
 		return nombre;
@@ -28,18 +32,10 @@ public class Computador {
 		this.id = id;
 	}
 	
-
-	public Salon getSalon() {
-		return salon;
-	}
-
-	public void setSalon(Salon salon) {
-		this.salon = salon;
-	}
         
         @Override
         public String toString() {
-            return "Computador{" + "nombre=" + nombre + ", id=" + id + ", salon=" + salon + '}';
+            return "Computador{" + "nombre=" + nombre + ", id=" + id + '}';
         }
 
 

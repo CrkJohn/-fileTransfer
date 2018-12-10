@@ -29,7 +29,7 @@
     </environments>
 	
     <mappers>
-    	<mapper resource="mappers/ComentarioMapper.xml"></mapper>
+    	<mapper resource="mappers/ComputadorMapper.xml"></mapper>
     	<mapper resource="mappers/SalonMapper.xml"></mapper>
     	<mapper resource="mappers/ProfesorMapper.xml"></mapper>
     </mappers> 

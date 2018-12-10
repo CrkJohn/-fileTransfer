@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.laboratorio.TranferenciaDeArchivos.persistence.mybatisimpl.mappers.ComputadorMapper">
+
+	<select  parameterType="map" id="getComputadores" resultMap="ComputadorResult">
+		SELECT 
+		pc.id as idComputador,
+		pc.nombre as nombreComputador
+		FROM  computadores as pc;
+               
+	</select>
+	
+	<resultMap type="Computador" id="ComputadorResult">
+		<id property='id' column='idComputador'/>
+		<result property='nombre' column='nombreComputador'/>         
+	</resultMap>
+	
+
+	
+</mapper>

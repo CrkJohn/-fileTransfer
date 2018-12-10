@@ -11,16 +11,20 @@
         <select id = "getSalones" resultMap="salonesResult">            
                 SELECT sa.id  as salonID,
                         sa.nombre as salonNombre,
-                        sa.descripcion as salonDescripcion
-                FROM salones as sa;		
+                        sa.descripcion as salonDescripcion,
+                        pc.id as idComputador,
+                        pc.nombre as nombreComputador
+                FROM salones as sa, computadores as pc;
         </select>
         
         <select id = "getSalonNombre" resultMap="salonesResult">            
                 SELECT sa.id  as salonID,
                         sa.nombre as salonNombre,
-                        sa.descripcion as salonDescripcion
-                FROM salones as sa
-                WHERE salonNombre, = #{id};		
+                        sa.descripcion as salonDescripcion,
+                        pc.id as idComputador,
+                        pc.nombre as nombreComputador
+                FROM salones as sa, computadores as pc
+                WHERE sa.nombre = #{id} and pc.id_salon = sa.id;		
         </select>
         
        <insert id="agregarSalon">
@@ -35,9 +39,15 @@
         <resultMap id="salonesResult" type="Salon">
 		<id property="id" column="salonID"></id>
 		<result property="nombre" column="salonNombre"></result>
-		<result property="descripcion" column="salonDescripcion"></result>		
+		<result property="descripcion" column="salonDescripcion"></result>	
+                <collection property='pcs' ofType='Computador' resultMap="ComputadorResult"/>	
 	</resultMap>
         
+        
+        <resultMap id="ComputadorResult" type="Computador" >
+		<id property='id' column='idComputador'/>
+		<result property='nombre' column='nombreComputador'/>         
+	</resultMap>
         
 	
 </mapper>
