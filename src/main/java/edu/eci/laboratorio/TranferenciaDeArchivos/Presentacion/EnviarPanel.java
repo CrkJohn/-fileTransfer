@@ -189,6 +189,7 @@ public class EnviarPanel extends javax.swing.JPanel {
                     + chooser.getSelectedFile());
             urlCarpeta = chooser.getSelectedFile().toString();
             urlArchivo="";
+            System.out.println("archivo funciono "+urlCarpeta);
             
         } else {
             JOptionPane.showMessageDialog(null,"No escogio ninguna carpeta","Advertencia",JOptionPane.INFORMATION_MESSAGE);
@@ -207,19 +208,20 @@ public class EnviarPanel extends javax.swing.JPanel {
         }
     }
     
-      private void EnviarAccionMe() throws FileNotFoundException, UnsupportedEncodingException, SQLException {
+    private void EnviarAccionMe() throws FileNotFoundException, UnsupportedEncodingException, SQLException {
             if(urlArchivo.isEmpty() && urlCarpeta.isEmpty() ){          
              JOptionPane.showMessageDialog(null,"No a escogido ni archivo ni carpeta a enviar","ERROR"
                     ,JOptionPane.ERROR_MESSAGE);
   
-            }else if(!urlArchivo.isEmpty()){
+            }else if(urlArchivo.equals("")){
+                System.out.println("Entreamos");
                 String salon = jComboBox2.getSelectedItem().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
                 Date now = new Date();
                 String strDate = sdf.format(now);                
-
-                String url = "src\\main\\java\\edu\\eci\\laboratorio\\Archivos\\"+strDate+".bat";
-                PrintWriter writer = new PrintWriter(url, "UTF-8");		
+                 
+                String url = "\\src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\x.bat";
+                PrintWriter writer = new PrintWriter("x.bat", "UTF-8");		
 		writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
@@ -235,7 +237,7 @@ public class EnviarPanel extends javax.swing.JPanel {
                     Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                
+                System.out.println("Entre");
             }
       }
     
