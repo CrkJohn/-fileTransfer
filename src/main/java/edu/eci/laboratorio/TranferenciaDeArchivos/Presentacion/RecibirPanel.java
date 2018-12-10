@@ -2,10 +2,13 @@ package edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion;
 
 import com.google.inject.Inject;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
+import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
 import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.impl.ServicesTranferenciaDeArchivosImpl;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,7 +31,7 @@ public class RecibirPanel extends JPanel {
         services = new ServicesTranferenciaDeArchivosImpl();
         
         prepareElementos();      
-        
+        prepareAcciones();
     }
 
 
@@ -43,7 +46,7 @@ public class RecibirPanel extends JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -64,7 +67,7 @@ public class RecibirPanel extends JPanel {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoEci.gif"))); // NOI18N
 
-        jButton2.setText("Regresar");
+        regresar.setText("Regresar");
 
         jLabel5.setText("Lista de salones");
 
@@ -83,7 +86,7 @@ public class RecibirPanel extends JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -145,7 +148,7 @@ public class RecibirPanel extends JPanel {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(regresar)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -153,7 +156,6 @@ public class RecibirPanel extends JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField inputComputador;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -165,6 +167,7 @@ public class RecibirPanel extends JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton recibirDePc;
     private javax.swing.JButton recibirPCS;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 
     private void prepareElementos() throws SQLException {
@@ -185,6 +188,24 @@ public class RecibirPanel extends JPanel {
           super.paintComponent(g);
           //g.drawImage(fondo,0,0,frame.getWidth(), frame.getHeight(), this);
       }
+
+    private void prepareAcciones() {
+            ActionListener volver = new ActionListener() {           
+            public void actionPerformed(ActionEvent e) {
+                   regresarMetodo();
+            }
+        };
+        regresar.addActionListener(volver);
+        
+    }
+    
+    private void regresarMetodo() {
+        try {
+            frame.irPanel("Principal");
+        } catch (TransferenciaDeArhivosException ex) {
+            Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
   
 }
