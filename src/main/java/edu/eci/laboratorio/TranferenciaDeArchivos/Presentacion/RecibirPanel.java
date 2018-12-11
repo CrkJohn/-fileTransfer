@@ -1,6 +1,6 @@
 package edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion;
 
-import com.google.inject.Inject;
+import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
 import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.impl.ServicesTranferenciaDeArchivosImpl;
@@ -9,8 +9,14 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -191,13 +197,61 @@ public class RecibirPanel extends JPanel {
       }
 
     private void prepareAcciones() {
-            ActionListener volver = new ActionListener() {           
+        ActionListener volver = new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                    regresarMetodo();
             }
         };
         regresar.addActionListener(volver);
         
+        
+        
+        ActionListener recibirSalones = new ActionListener() {           
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    recibirPCSMetodo();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            
+        };
+        recibirPCS.addActionListener(recibirSalones);
+        
+    }
+    
+    private void recibirPCSMetodo() throws FileNotFoundException, UnsupportedEncodingException, SQLException {
+                String salon = jComboBox1.getSelectedItem().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                Date now = new Date();
+                String strDate = sdf.format(now);                
+                System.out.println(strDate);
+                strDate = strDate.replaceAll("-","");              
+                strDate = strDate.replaceAll(".","");  
+                strDate = strDate.replaceAll(" ","");              
+                strDate = strDate.replaceAll(":","");               
+                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
+                PrintWriter writer = new PrintWriter(url, "UTF-8");	                
+		writer.println("@echo off");
+                Salon salones = frame.ideasServices.getSalonNombre(salon);		
+                //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
+                for(Computador c : salones.getPcs()){
+                        String tmp = String.format("xcopy /s \\\\%s\\Sistemas\\Temp C:/Temp",c.getNombre());
+                        writer.println(tmp);		
+                }
+                writer.close();
+                try {
+                   Runtime.getRuntime().exec("cmd /c start "+url+ " ");
+                } catch (IOException ex) {
+                   JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
+                    Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+    
     }
     
     private void regresarMetodo() {
