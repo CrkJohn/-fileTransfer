@@ -181,6 +181,7 @@ public class RecibirPanel extends JPanel {
         for (Iterator<Salon> iterator = laboratorios.iterator(); iterator.hasNext();) {
             Salon next = iterator.next();
             jComboBox1.addItem(next.getNombre());
+            jComboBox2.addItem(next.getNombre());
         }
     }
     @Override

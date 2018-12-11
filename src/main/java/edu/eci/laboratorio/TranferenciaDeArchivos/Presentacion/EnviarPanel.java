@@ -266,8 +266,9 @@ public class EnviarPanel extends javax.swing.JPanel {
                 Date now = new Date();
                 String strDate = sdf.format(now);                
                  
-                String url = "\\src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\x.bat";
-                PrintWriter writer = new PrintWriter("x.bat", "UTF-8");		
+                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
+                PrintWriter writer = new PrintWriter(url, "UTF-8");		
+                
 		writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
@@ -277,7 +278,7 @@ public class EnviarPanel extends javax.swing.JPanel {
                 }
                 writer.close();
                 try {
-                    Runtime.getRuntime().exec("cmd /c start "+url+ " ");
+                    //Runtime.getRuntime().exec("cmd /c start "+url+ " ");
                 } catch (IOException ex) {
                    JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
                     Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
