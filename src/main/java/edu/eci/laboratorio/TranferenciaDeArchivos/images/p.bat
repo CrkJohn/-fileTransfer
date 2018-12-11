@@ -1,6 +1,26 @@
 @echo off
-copy /b C:\Users\rescate\Documents\fileTransfer\src\main\java\edu\eci\laboratorio\TranferenciaDeArchivos\images\fondo.png \\SISTEMAS72\Sistemas\Temp
-copy /b C:\Users\rescate\Documents\fileTransfer\src\main\java\edu\eci\laboratorio\TranferenciaDeArchivos\images\fondo.png \\SISTEMAS71\Sistemas\Temp
-echo hello
-
-
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas50\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas51\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas52\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas53\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas54\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas55\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas56\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas57\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas58\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas59\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas60\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas61\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas62\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas63\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas64\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas65\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas66\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas67\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas68\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas69\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas70\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas71\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas72\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas73\Sistemas\Temp
+xcopy /b C:\Users\estudiante\Documents\John\fileTransfer\img \\Sistemas74\Sistemas\Temp

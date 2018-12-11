@@ -265,7 +265,12 @@ public class EnviarPanel extends javax.swing.JPanel {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
                 Date now = new Date();
                 String strDate = sdf.format(now);                
-                 
+                System.out.println(strDate);
+                strDate = strDate.replaceAll("-","");              
+                strDate = strDate.replaceAll(".","");  
+                strDate = strDate.replaceAll(" ","");              
+                strDate = strDate.replaceAll(":","");
+               
                 String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
                 PrintWriter writer = new PrintWriter(url, "UTF-8");		
                 
@@ -278,7 +283,7 @@ public class EnviarPanel extends javax.swing.JPanel {
                 }
                 writer.close();
                 try {
-                    //Runtime.getRuntime().exec("cmd /c start "+url+ " ");
+                   Runtime.getRuntime().exec("cmd /c start "+url+ " ");
                 } catch (IOException ex) {
                    JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
                     Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
