@@ -1,3 +1,25 @@
 @echo off
-echo D|xcopy  /s /b C:\Users\rescate\Documents\Carpeta \\Sistemas02\Sistemas\Temp\Pr1d  /Y
-pause > nul
+xcopy /s \\Sistemas1\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas2\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas3\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas4\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas5\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas6\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas7\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas8\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas9\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas10\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas11\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas12\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas13\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas14\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas15\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas16\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas17\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas18\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas19\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas20\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas21\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas22\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas23\Sistemas\Temp C:/Temp
+xcopy /s \\Sistemas24\Sistemas\Temp C:/Temp
