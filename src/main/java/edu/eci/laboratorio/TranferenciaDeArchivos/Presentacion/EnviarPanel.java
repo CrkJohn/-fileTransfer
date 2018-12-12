@@ -10,6 +10,7 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,12 +18,14 @@ import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -270,17 +273,27 @@ public class EnviarPanel extends javax.swing.JPanel {
                 strDate = strDate.replaceAll(".","");  
                 strDate = strDate.replaceAll(" ","");              
                 strDate = strDate.replaceAll(":","");
-               
+                System.out.println(strDate);
                 String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
                 PrintWriter writer = new PrintWriter(url, "UTF-8");		
                 
 		writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
+                //boolean mk = new File("\\\\Sistemas0%d\\Sistemas\\Temp\\Prueba").mkdirs();
+                String []chars = urlCarpeta.split("\\\\");             
+                String nombreCarpeta = chars[chars.length-1];
                 for(Computador c : salones.getPcs()){
-                        String tmp = String.format("xcopy /b %s \\\\%s\\Sistemas\\Temp",urlCarpeta,c.getNombre());
-                        writer.println(tmp);		
-                }
+                        String tmp;
+                        if(c.getId()<10){
+                            tmp = String.format("echo D|xcopy /s /b %s \\\\Sistemas0%d\\Sistemas\\Temp\\%s /Y",urlCarpeta,c.getId(),nombreCarpeta);                          
+                        }else{
+                            tmp = String.format("echo D|xcopy  /s /b %s \\\\%s\\Sistemas\\Temp\\%s /Y ",urlCarpeta,c.getNombre(),nombreCarpeta);                           
+                       
+                        }
+                        writer.println(tmp);	
+
+                 }
                 writer.close();
                 try {
                    Runtime.getRuntime().exec("cmd /c start "+url+ " ");
