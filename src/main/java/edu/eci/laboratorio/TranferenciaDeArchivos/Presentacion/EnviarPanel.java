@@ -294,6 +294,7 @@ public class EnviarPanel extends javax.swing.JPanel {
                         writer.println(tmp);	
 
                  }
+                writer.println("exit 0");
                 writer.close();
                 try {
                    Runtime.getRuntime().exec("cmd /c start "+url+ " ");

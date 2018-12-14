@@ -223,6 +223,49 @@ public class RecibirPanel extends JPanel {
         };
         recibirPCS.addActionListener(recibirSalones);
         
+         ActionListener recibirDePcAction = new ActionListener() {           
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    recibirDePcMetodo();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+           
+
+            
+        };
+        recibirDePc.addActionListener(recibirDePcAction);
+        
+    }
+    
+    private void recibirDePcMetodo()  throws FileNotFoundException, UnsupportedEncodingException, SQLException {
+            String salon = jComboBox1.getSelectedItem().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                Date now = new Date();
+                String strDate = sdf.format(now);                
+                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
+                PrintWriter writer = new PrintWriter(url, "UTF-8");	                
+		writer.println("@echo off");
+                Salon salones = frame.ideasServices.getSalonNombre(salon);		
+                String numeroComputador = inputComputador.getText().toString();
+                String tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas%s\\Sistemas\\Temp C:\\Temp /Y",numeroComputador);
+                writer.println(tmp);		
+                writer.println("exit 0");
+                writer.close();
+                Runtime rt = Runtime.getRuntime();
+                try {
+                   rt.exec("cmd /c start "+url+ " ");   
+                   
+                } catch (IOException ex) {
+                   JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
+                    Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }
     
     private void recibirPCSMetodo() throws FileNotFoundException, UnsupportedEncodingException, SQLException {
