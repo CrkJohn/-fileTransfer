@@ -63,7 +63,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		setResizable(false);
 		IniciarTA();
 		setFocusable(false);
-                //setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());	
+                setIconImage(new ImageIcon("src\\main\\resources\\Imagenes\\icon.png").getImage());	
 	}
 	
 	private void centro() {
@@ -105,10 +105,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	
 	
 	
-	public void prepareElementosMenu(){
-		
-	}
-
+	
 	public static void main(String[] args) throws TransferenciaDeArhivosException, IOException, SQLException {
 		
                 TranferenciaDeArchivosGUI tfGUI = new TranferenciaDeArchivosGUI();

@@ -34,10 +34,10 @@ public class MyBatisExample {
 		}
 		return sqlSessionFactory;
 	}
-
+/*		
+  
 	public static void main(String[] args) throws SQLException {
-		
-            SqlSessionFactory sessionfact = getSqlSessionFactory();
+          SqlSessionFactory sessionfact = getSqlSessionFactory();
 	    SqlSession sqlss = sessionfact.openSession();      
 	    ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
 	    ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
@@ -49,8 +49,6 @@ public class MyBatisExample {
              
             sqlss.commit();
 	    sqlss.close();
-		
-		
-	
 	}
+*/
 }
