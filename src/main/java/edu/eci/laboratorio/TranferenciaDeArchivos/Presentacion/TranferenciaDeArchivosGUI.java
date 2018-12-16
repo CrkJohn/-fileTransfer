@@ -1,11 +1,9 @@
 package edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion.*;
-
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
 import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.ServicesIdeas;
 import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.ServicesIdeasFactory;
@@ -14,13 +12,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.lang.Runtime;
 import java.sql.SQLException;
 
 public class TranferenciaDeArchivosGUI extends JFrame{
@@ -71,19 +63,15 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		setSize(xEsquina, yEsquina);
 		setLocationRelativeTo(null);
 	}
- 
 	
 	private void IniciarTA() throws TransferenciaDeArhivosException {
 		irPanel("Principal");
 	}
 
- 
 	public void irPanel(String src) throws TransferenciaDeArhivosException {
 		layout.show(principal,src);
 	}
- 
- 
- 
+
 	private void prepareAcciones() {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -100,31 +88,9 @@ public class TranferenciaDeArchivosGUI extends JFrame{
  
 		}
 	}
- 
-	
-	
-	
-	
-	
+ 	
 	public static void main(String[] args) throws TransferenciaDeArhivosException, IOException, SQLException {
-		
-                TranferenciaDeArchivosGUI tfGUI = new TranferenciaDeArchivosGUI();
-                //String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\a.bat";
-                //PrintWriter writer = new PrintWriter(url, "UTF-8");		
-                //writer.close();
-		/*String url = "src\\main\\java\\edu\\eci\\laboratorio\\Archivos\\p.bat";
-		PrintWriter writer = new PrintWriter(url, "UTF-8");
-		
-		writer.println("@echo off");
-		writer.println("echo hello");
-		writer.println("");
-		
-		writer.close();
-		Runtime.getRuntime().exec("cmd /c start "+url+ " ");
-		System.out.println("Se logro");*/
-		
-
-		
+                TranferenciaDeArchivosGUI tfGUI = new TranferenciaDeArchivosGUI();		
 	}
  
 }

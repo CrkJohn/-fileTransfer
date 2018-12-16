@@ -23,10 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 public class RecibirPanel extends JPanel {
-    
-    
-    
-
+   
     private ServicesTranferenciaDeArchivosImpl services; 
     private TranferenciaDeArchivosGUI frame;
     private Image fondo;
@@ -34,8 +31,7 @@ public class RecibirPanel extends JPanel {
     public RecibirPanel(TranferenciaDeArchivosGUI frame) throws SQLException {
         initComponents();
         this.frame = frame;
-        services = new ServicesTranferenciaDeArchivosImpl();
-        
+        services = new ServicesTranferenciaDeArchivosImpl();        
         prepareElementos();      
         prepareAcciones();
     }
@@ -192,20 +188,13 @@ public class RecibirPanel extends JPanel {
 
     private void prepareElementos() throws SQLException {
         fondo = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/Imagenes/transert.jpg"));
-		
-        ArrayList<Salon> laboratorios = frame.ideasServices.getSalones();
-       
+        ArrayList<Salon> laboratorios = frame.ideasServices.getSalones();       
         for (Iterator<Salon> iterator = laboratorios.iterator(); iterator.hasNext();) {
             Salon next = iterator.next();
             jComboBox1.addItem(next.getNombre());
             jComboBox2.addItem(next.getNombre());
         }
     }
-    @Override
-        protected void paintComponent(Graphics g) {
-          super.paintComponent(g);
-          //g.drawImage(fondo,0,0,frame.getWidth(), frame.getHeight(), this);
-      }
 
     private void prepareAcciones() {
         ActionListener volver = new ActionListener() {           
@@ -213,10 +202,8 @@ public class RecibirPanel extends JPanel {
                    regresarMetodo();
             }
         };
-        regresar.addActionListener(volver);
-        
-        
-        
+        regresar.addActionListener(volver);      
+       
         ActionListener recibirSalones = new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -228,12 +215,9 @@ public class RecibirPanel extends JPanel {
                 } catch (SQLException ex) {
                     Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-
-            
+            }           
         };
-        recibirPCS.addActionListener(recibirSalones);
-        
+        recibirPCS.addActionListener(recibirSalones);        
          ActionListener recibirDePcAction = new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -245,18 +229,13 @@ public class RecibirPanel extends JPanel {
                 } catch (SQLException ex) {
                     Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-
-           
-
-            
+            }        
         };
         recibirDePc.addActionListener(recibirDePcAction);
-        
     }
     
     private void recibirDePcMetodo()  throws FileNotFoundException, UnsupportedEncodingException, SQLException {
-            String salon = jComboBox1.getSelectedItem().toString();
+                String salon = jComboBox1.getSelectedItem().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
                 Date now = new Date();
                 String strDate = sdf.format(now);                
@@ -271,8 +250,7 @@ public class RecibirPanel extends JPanel {
                 writer.close();
                 Runtime rt = Runtime.getRuntime();
                 try {
-                   rt.exec("cmd /c start "+url+ " ");   
-                   
+                   rt.exec("cmd /c start "+url+ " ");                      
                 } catch (IOException ex) {
                    JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
                     Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -304,8 +282,7 @@ public class RecibirPanel extends JPanel {
                 } catch (IOException ex) {
                    JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
                     Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-    
+                }    
     }
     
     private void regresarMetodo() {
@@ -314,7 +291,5 @@ public class RecibirPanel extends JPanel {
         } catch (TransferenciaDeArhivosException ex) {
             Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-  
+    }  
 }

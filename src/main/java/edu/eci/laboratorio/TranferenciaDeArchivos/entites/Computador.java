@@ -13,9 +13,6 @@ public class Computador {
             
         }
         
-
-
-
 	public String getNombre() {
 		return nombre;
 	}

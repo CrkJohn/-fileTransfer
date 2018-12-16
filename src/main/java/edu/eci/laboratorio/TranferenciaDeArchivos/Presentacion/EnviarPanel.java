@@ -24,7 +24,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author rescate
+ * @author John David Ibanez
+ * 
  */
 public class EnviarPanel extends javax.swing.JPanel {
 
@@ -42,7 +43,6 @@ public class EnviarPanel extends javax.swing.JPanel {
         urlArchivo="";
         urlCarpeta="";
         this.frame.setSize(800, 500);
-        this.setSize(800, 500);
     }
 
     /**
@@ -189,9 +189,8 @@ public class EnviarPanel extends javax.swing.JPanel {
                 escogerCarpetaAccionMe();
             }
         };
-        escogerCarpeta.addActionListener(escogerCarpetaAccion);
-        
-         ActionListener EnviarAccion = new ActionListener() {
+        escogerCarpeta.addActionListener(escogerCarpetaAccion);        
+        ActionListener EnviarAccion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
                     EnviarAccionMe();
@@ -203,33 +202,23 @@ public class EnviarPanel extends javax.swing.JPanel {
                     Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
-          
         };
         Enviar.addActionListener(EnviarAccion);
-        
-        ActionListener volver = new ActionListener() {
-           
+        ActionListener volver = new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                    regresarMetodo();
             }
-
         };
-        regresar.addActionListener(volver);
-        
+        regresar.addActionListener(volver);        
     }
+    
     private void regresarMetodo() {
         try {
             frame.irPanel("Principal");
         } catch (TransferenciaDeArhivosException ex) {
             Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-      
-
-    private void archivoAccion() {
-        
-    }
+    }  
 
     public void escogerCarpetaAccionMe(){
         chooser = new JFileChooser();
@@ -239,14 +228,8 @@ public class EnviarPanel extends javax.swing.JPanel {
         chooser.setAcceptAllFileFilterUsed(false);
         urlCarpeta = "";
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            System.out.println("getCurrentDirectory(): "
-                    + chooser.getCurrentDirectory());
-            System.out.println("getSelectedFile() : "
-                    + chooser.getSelectedFile());
             urlCarpeta = chooser.getSelectedFile().toString();
-            urlArchivo="";
-            System.out.println("archivo funciono "+urlCarpeta);
-            
+            urlArchivo="";           
         } else {
             JOptionPane.showMessageDialog(null,"No escogio ninguna carpeta","Advertencia",JOptionPane.INFORMATION_MESSAGE);
         }
@@ -282,12 +265,9 @@ public class EnviarPanel extends javax.swing.JPanel {
                 strDate = strDate.replaceAll(":","");
                 System.out.println(strDate);
                 String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
-                PrintWriter writer = new PrintWriter(url, "UTF-8");		
-                
+                PrintWriter writer = new PrintWriter(url, "UTF-8"); 
 		writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
-                //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
-                //boolean mk = new File("\\\\Sistemas0%d\\Sistemas\\Temp\\Prueba").mkdirs();
                 String []chars = urlCarpeta.split("\\\\");             
                 String nombreCarpeta = chars[chars.length-1];
                 for(Computador c : salones.getPcs()){
@@ -296,11 +276,9 @@ public class EnviarPanel extends javax.swing.JPanel {
                             tmp = String.format("echo D|xcopy /s /b %s \\\\Sistemas0%d\\Sistemas\\Temp\\%s /Y",urlCarpeta,c.getId(),nombreCarpeta);                          
                         }else{
                             tmp = String.format("echo D|xcopy  /s /b %s \\\\%s\\Sistemas\\Temp\\%s /Y ",urlCarpeta,c.getNombre(),nombreCarpeta);                           
-                       
                         }
                         writer.println(tmp);	
-
-                 }
+                }
                 writer.println("exit 0");
                 writer.close();
                 try {
@@ -313,5 +291,5 @@ public class EnviarPanel extends javax.swing.JPanel {
                 System.out.println("Entre");
             }
       }
-    
+  
 }
