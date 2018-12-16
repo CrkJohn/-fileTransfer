@@ -10,6 +10,9 @@ Monitoria : Laboratorio de sistemas
 ![GitHub last commit](https://img.shields.io/github/last-commit/CrkJohn/fileTransfer.svg?style=for-the-badge)
 
 
+Lenguaje más manejado.
+![90+%]( https://img.shields.io/github/languages/top/crkJohn/fileTransfer.svg?style=for-the-badge&colorB=red)
+
 Roles asignados:
 	
  - John Ibañez Rodriguez  - 	 ***Desarrollador***
@@ -40,7 +43,7 @@ Roles asignados:
 
 ### Arquitectura utilizada.
 
->![90+%]( https://img.shields.io/github/languages/top/crkJohn/fileTransfer.svg?style=for-the-badge&colorB=red)
+> Java
 
 > PostgreSQL
 
