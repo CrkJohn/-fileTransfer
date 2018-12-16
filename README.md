@@ -18,6 +18,10 @@ Support
 
 ![](https://img.shields.io/badge/platform-windows-lightgrey.svg?colorB=blue)
 
+
+
+![Manual usuario](https://docs.google.com/document/d/1CxQ-NMGng1kGssjFT_YPGZijAlIYz-U_l1hMQ3G2B8c/edit?usp=sharing)
+
 Roles asignados:
 	
  - John Ibañez Rodriguez  - 	 ***Desarrollador***
