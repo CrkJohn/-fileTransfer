@@ -13,6 +13,9 @@ Monitoria : Laboratorio de sistemas
 Lenguaje más manejado.
 ![90+%]( https://img.shields.io/github/languages/top/crkJohn/fileTransfer.svg?style=for-the-badge&colorB=red)
 
+Support
+![](https://img.shields.io/badge/platform-windows-lightgrey.svg?colorB=blue)
+
 Roles asignados:
 	
  - John Ibañez Rodriguez  - 	 ***Desarrollador***
