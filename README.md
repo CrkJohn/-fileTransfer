@@ -40,7 +40,7 @@ Roles asignados:
 
 ### Arquitectura utilizada.
 
-> Java8
+>![90+%]( https://img.shields.io/github/languages/top/crkJohn/fileTransfer.svg?style=for-the-badge&colorB=red)
 
 > PostgreSQL
 
