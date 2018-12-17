@@ -20,7 +20,7 @@ Support
 
 
 
-![Manual usuario](https://docs.google.com/document/d/1CxQ-NMGng1kGssjFT_YPGZijAlIYz-U_l1hMQ3G2B8c/edit?usp=sharing)
+![](https://docs.google.com/document/d/1CxQ-NMGng1kGssjFT_YPGZijAlIYz-U_l1hMQ3G2B8c/edit?usp=sharing)
 
 Roles asignados:
 	
