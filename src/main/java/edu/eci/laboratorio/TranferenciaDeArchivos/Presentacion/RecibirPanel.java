@@ -273,7 +273,13 @@ public class RecibirPanel extends JPanel {
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
                 for(Computador c : salones.getPcs()){
-                        String tmp = String.format("echo Y|xcopy /s /b \\\\%s\\Sistemas\\Temp C:\\Temp /Y",c.getNombre());
+                    String tmp;
+                        if(c.getId()<10){
+                            
+                            tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas0%d\\Sistemas\\Temp C:\\Temp /Y",c.getId());
+                        }else{
+                            tmp = String.format("echo Y|xcopy /s /b \\\\%s\\Sistemas\\Temp C:\\Temp /Y",c.getNombre());
+                        }
                         writer.println(tmp);		
                 }
                 writer.close();
