@@ -45,7 +45,7 @@ Roles asignados:
 
 ### Modelo de clases.
 
-(https://github.com/CrkJohn/fileTransfer/blob/master/img/DiagramaExtendidoEntites.png)
+![](https://github.com/CrkJohn/fileTransfer/blob/master/img/DiagramaExtendidoEntites.png)
 ### Modelo de base de datos
 
 ![](https://github.com/CrkJohn/fileTransfer/blob/master/img/Base%20De%20datos.PNG)
