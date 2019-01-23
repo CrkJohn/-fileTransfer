@@ -1,0 +1,25 @@
+@echo off
+echo Y|xcopy /s /b \\Sistemas01\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas02\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas03\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas04\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas05\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas06\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas07\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas08\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas09\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas10\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas11\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas12\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas13\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas14\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas15\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas16\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas17\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas18\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas19\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas20\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas21\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas22\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas23\Sistemas\Temp C:\Temp /Y
+echo Y|xcopy /s /b \\Sistemas24\Sistemas\Temp C:\Temp /Y
