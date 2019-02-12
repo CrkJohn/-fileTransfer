@@ -243,8 +243,16 @@ public class RecibirPanel extends JPanel {
                 PrintWriter writer = new PrintWriter(url, "UTF-8");	                
 		writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
-                String numeroComputador = inputComputador.getText().toString();
-                String tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas%s\\Sistemas\\Temp C:\\Temp /Y",numeroComputador);
+                int numeroComputador = Integer.parseInt(inputComputador.getText().toString());
+                String tmp2 = String.format("mkdir C:\\Temp\\Sistemas%d",numeroComputador);     
+                String tmp ="";
+                if(numeroComputador < 10){                           
+                   tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas0%d\\Sistemas\\Temp C:\\Temp\\Sistemas0%d /Y",numeroComputador,numeroComputador);
+                }else{
+                     tmp = String.format("echo Y|xcopy /s /b \\\\%s\\Sistemas\\Temp C:\\Temp\\Sistemas%d /Y",numeroComputador,numeroComputador);
+                }
+                System.out.println(tmp2);
+                writer.println(tmp2);		
                 writer.println(tmp);		
                 writer.println("exit 0");
                 writer.close();
@@ -273,13 +281,16 @@ public class RecibirPanel extends JPanel {
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
                 for(Computador c : salones.getPcs()){
-                    String tmp;
+                        String tmp ="";
+                        String tmp2 = String.format("mkdir C:\\Temp\\Sistemas%d",c.getId());     
                         if(c.getId()<10){
                             
-                            tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas0%d\\Sistemas\\Temp C:\\Temp /Y",c.getId());
+                            tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas0%d\\Sistemas\\Temp C:\\Temp\\Sistemas%d /Y",c.getId(),c.getId());
                         }else{
-                            tmp = String.format("echo Y|xcopy /s /b \\\\%s\\Sistemas\\Temp C:\\Temp /Y",c.getNombre());
+                            tmp = String.format("echo Y|xcopy /s /b \\\\%s\\Sistemas\\Temp C:\\Temp\\Sistemas%d /Y",c.getNombre(),c.getId());
                         }
+                        
+                        writer.println(tmp2);
                         writer.println(tmp);		
                 }
                 writer.close();

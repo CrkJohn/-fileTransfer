@@ -35,7 +35,6 @@ public class InicialPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         recibir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -64,16 +63,6 @@ public class InicialPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
         jLabel2.setText("Recibir Archivos");
-
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Administrador");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoEci.gif"))); // NOI18N
 
@@ -113,10 +102,6 @@ public class InicialPanel extends javax.swing.JPanel {
                         .addGap(24, 24, 24)
                         .addComponent(jLabel5)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(399, 399, 399))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,17 +124,11 @@ public class InicialPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addComponent(jButton3)
-                .addGap(33, 33, 33)
+                .addGap(84, 84, 84)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
         // TODO add your handling code here:
@@ -158,7 +137,6 @@ public class InicialPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton enviar;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
