@@ -4,7 +4,6 @@ import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
 import edu.eci.laboratorio.TranferenciaDeArchivos.samples.services.impl.ServicesTranferenciaDeArchivosImpl;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -234,34 +233,60 @@ public class RecibirPanel extends JPanel {
         recibirDePc.addActionListener(recibirDePcAction);
     }
     
+    private boolean existPC(Salon salon , int id){
+        for(Computador s : salon.getPcs()){
+              if(s.getId() == id)return true;
+        }
+        return false;
+    }
+    
+    private void batPc(String url , int numeroComputador){
+        try {
+            PrintWriter writer = new PrintWriter(url, "UTF-8");	
+            writer.println("@echo off");               
+            String tmp2 = String.format("mkdir C:\\Temp\\Sistemas%d",numeroComputador);                  
+            String tmp ="";
+            if(numeroComputador < 10){                           
+                tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas0%d\\Sistemas\\Temp C:\\Temp\\Sistemas0%d /Y",numeroComputador,numeroComputador);
+            }else{
+                tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas%d\\Sistemas\\Temp C:\\Temp\\Sistemas%d /Y",numeroComputador,numeroComputador);
+            }
+            System.out.println(tmp2);
+            writer.println(tmp2);		
+            writer.println(tmp);		
+            writer.println("exit 0");
+            writer.close();
+            Runtime rt = Runtime.getRuntime();       
+            rt.exec("cmd /c start "+url+ " ");                  
+        }catch (FileNotFoundException ex) {
+            Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(RecibirPanel.class.getName()).log(Level.SEVERE, null, ex);        
+        }catch (IOException ex) {
+            JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
+            Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+        
+    
     private void recibirDePcMetodo()  throws FileNotFoundException, UnsupportedEncodingException, SQLException {
-                String salon = jComboBox1.getSelectedItem().toString();
+                String salon = jComboBox2.getSelectedItem().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
                 Date now = new Date();
-                String strDate = sdf.format(now);                
-                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
-                PrintWriter writer = new PrintWriter(url, "UTF-8");	                
-		writer.println("@echo off");
-                Salon salones = frame.ideasServices.getSalonNombre(salon);		
+                String strDate = sdf.format(now);           
+                strDate = strDate.replaceAll("-","");              
+                strDate = strDate.replaceAll(".","");  
+                strDate = strDate.replaceAll(" ","");              
+                strDate = strDate.replaceAll(":","");            
+                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";                                
+		 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 int numeroComputador = Integer.parseInt(inputComputador.getText().toString());
-                String tmp2 = String.format("mkdir C:\\Temp\\Sistemas%d",numeroComputador);     
-                String tmp ="";
-                if(numeroComputador < 10){                           
-                   tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas0%d\\Sistemas\\Temp C:\\Temp\\Sistemas0%d /Y",numeroComputador,numeroComputador);
+                boolean existPCinSa = existPC(salones,numeroComputador);
+                if(existPCinSa){
+                    batPc(url,numeroComputador);
                 }else{
-                     tmp = String.format("echo Y|xcopy /s /b \\\\%s\\Sistemas\\Temp C:\\Temp\\Sistemas%d /Y",numeroComputador,numeroComputador);
-                }
-                System.out.println(tmp2);
-                writer.println(tmp2);		
-                writer.println(tmp);		
-                writer.println("exit 0");
-                writer.close();
-                Runtime rt = Runtime.getRuntime();
-                try {
-                   rt.exec("cmd /c start "+url+ " ");                      
-                } catch (IOException ex) {
-                   JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
-                    Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"El computador no corresponde al salon","ERROR", JOptionPane.ERROR_MESSAGE);
                 }
     }
     
