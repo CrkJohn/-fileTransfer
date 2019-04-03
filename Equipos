@@ -1,0 +1,59 @@
+msg * "mensaje"
+
+"10 minutos antes de las 7:00pm, guardar todos sus  trabajos y dejar su puesto organizado y limpio, gracias"
+
+-----X equipo ----------
+Invoke-Command -computerName sistemas67 -ScriptBlock{shutdown /s /t 0} -credential rescate
+
+----- x Equipo mensaje personalizado y tiempo 60 segs-------
+Invoke-Command -computerName sistemas68 -ScriptBlock{shutdown /s /c "su computador morira :P" /t 60} -credential rescate
+
+-----Apaga TODO-------
+Invoke-Command -computerName sistemas01,sistemas02,sistemas03,sistemas04,sistemas05,sistemas06,sistemas07,sistemas08,sistemas09,sistemas10,sistemas11,sistemas12,sistemas13,sistemas14,sistemas15,sistemas16,sistemas17,sistemas18,sistemas19,sistemas20,sistemas21,sistemas22,sistemas23,sistemas24,sistemas25,sistemas26,sistemas27,sistemas28,sistemas29,sistemas30,sistemas31,sistemas32,sistemas33,sistemas34,sistemas35,sistemas36,sistemas37,sistemas38,sistemas39,sistemas40,sistemas41,sistemas42,sistemas43,sistemas44,sistemas45,sistemas46,sistemas47,sistemas48,sistemas49,sistemas50,sistemas51,sistemas52,sistemas53,sistemas54,sistemas55,sistemas56,sistemas57,sistemas58,sistemas59,sistemas60,sistemas61,sistemas62,sistemas63,sistemas64,sistemas65,sistemas66,sistemas67,sistemas68,sistemas69,sistemas70,sistemas71,sistemas72,sistemas73,sistemas74,sistemas75,sistemas76,sistemas77,sistemas78,sistemas79,sistemas81,sistemas82,sistemas83,sistemas84,sistemas85,sistemas86,sistemas87,sistemas88,sistemas89,sistemas90,sistemas91,sistemas92,sistemas93,sistemas94,sistemas95,sistemas96,sistemas97,sistemas98,sistemas99,sistemas100,sistemas101,sistemas102,sistemas103,sistemas104,sistemas105,sistemas106,sistemas107,sistemas108,sistemas109,sistemas110,sistemas111,sistemas112,sistemas113,sistemas114,sistemas115,sistemas116,sistemas117,sistemas118,sistemas119,sistemas120,sistemas121,sistemas122,sistemas123,sistemas124,sistemas125,sistemas126,sistemas127,sistemas128,sistemas129,sistemas130,sistemas131,sistemas132,sistemas133,sistemas134,sistemas135,sistemas136,sistemas137,sistemas138,sistemas139,sistemas140,sistemas141,sistemas142,sistemas143,sistemas144,sistemas145,sistemas146,sistemas147,sistemas148,sistemas149,sistemas150,sistemas151,sistemas152,sistemas153,sistemas154,sistemas155,sistemas156,sistemas157,sistemas158,sistemas159,sistemas160,sistemas161,sistemas162,sistemas163,sistemas164,sistemas165,sistemas166,sistemas167,sistemas168,sistemas169,sistemas170,sistemas171,sistemas172,sistemas173,sistemas174,sistemas175,sistemas176,sistemas177,sistemas178,sistemas179,sistemas180,sistemas181,sistemas182,sistemas183,sistemas184,sistemas185,sistemas186,sistemas187,sistemas188,sistemas189,sistemas190,sistemas191,sistemas192,sistemas193,sistemas194,sistemas195,sistemas196,sistemas197,sistemas198,sistemas199,sistemas200,sistemas201,sistemas202,sistemas203,sistemas204,sistemas205,sistemas206,sistemas207,sistemas208,sistemas209,sistemas210,sistemas211,sistemas212,sistemas213,sistemas214,sistemas215,sistemas216,sistemas217,sistemas218,sistemas219,sistemas220,sistemas221,sistemas222,sistemas223,sistemas224,sistemas225,sistemas226,sistemas227,sistemas228,sistemas229,sistemas230,sistemas231,sistemas232,sistemas233,sistemas234,sistemas235,sistemas236,sistemas237,sistemas238,sistemas239,sistemas240,sistemas241,sistemas242,sistemas243,sistemas244,sistemas245,sistemas246,sistemas247,sistemas248,sistemas249,sistemas250,sistemas251,sistemas252,sistemas253,sistemas254,sistemas255,sistemas256,sistemas257,sistemas258,sistemas259,sistemas260,sistemas261,sistemas262,sistemas263,sistemas264,sistemas265,sistemas266,sistemas267,sistemas268,sistemas269,sistemas270,sistemas271,sistemas272,sistemas273,sistemas274,sistemas275,sistemas276,sistemas277,sistemas278,sistemas279,sistemas280,sistemas281,sistemas282,sistemas283,sistemas284,sistemas285,sistemas286,sistemas287,sistemas288,sistemas289,sistemas290,sistemas291,sistemas292,sistemas293,sistemas294,sistemas295,sistemas296,sistemas297,sistemas298,sistemas299 -ScriptBlock{shutdown /s /t 0} -credential rescate
+
+----- Software
+Invoke-Command -computerName sistemas01,sistemas02,sistemas03,sistemas04,sistemas05,sistemas06,sistemas07,sistemas08,sistemas09,sistemas10,sistemas11,sistemas12,sistemas13,sistemas14,sistemas15,sistemas16,sistemas17,sistemas18,sistemas19,sistemas20,sistemas21,sistemas22,sistemas23,sistemas24 -ScriptBlock{shutdown /s /t 0} -credential rescate
+
+------ Plataformas
+Invoke-Command -computerName sistemas25,sistemas26,sistemas27,sistemas28,sistemas29,sistemas30,sistemas31,sistemas32,sistemas33,sistemas34,sistemas35,sistemas36,sistemas37,sistemas38,sistemas39,sistemas40,sistemas41,sistemas42,sistemas43,sistemas44,sistemas45,sistemas46,sistemas47,sistemas48 -ScriptBlock{msg * "10 minutos antes de las 7:00pm, guardar todos sus  trabajos y dejar su puesto organizado y limpio, gracias"} -credential rescate
+
+----- B0
+Invoke-Command -computerName sistemas50,sistemas51,sistemas52,sistemas53,sistemas54,sistemas55,sistemas56,sistemas57,sistemas58,sistemas59,sistemas60,sistemas61,sistemas62,sistemas63,sistemas64,sistemas65,sistemas66,sistemas67,sistemas68,sistemas69,sistemas70,sistemas71,sistemas72,sistemas73,sistemas74,sistemas75,sistemas76,sistemas77,sistemas78,sistemas79,sistemas81,sistemas82,sistemas83,sistemas84,sistemas85,sistemas86,sistemas87,sistemas88,sistemas89,sistemas90,sistemas91,sistemas92,sistemas93,sistemas94,sistemas95,sistemas96,sistemas97,sistemas98,sistemas99,sistemas100 -ScriptBlock{shutdown /s /t 0} -credential rescate
+
+----- Todo el H -------------
+Invoke-Command -computerName sistemas170,sistemas171,sistemas172,sistemas173,sistemas174,sistemas175,sistemas176,sistemas177,sistemas178,sistemas179,sistemas180,sistemas181,sistemas182,sistemas183,sistemas184,sistemas185,sistemas186,sistemas187,sistemas188,sistemas189,sistemas190,sistemas191,sistemas192,sistemas193,sistemas194,sistemas195,sistemas196,sistemas197,sistemas198,sistemas199,sistemas200,sistemas201,sistemas202,sistemas203,sistemas204,sistemas205,sistemas206,sistemas207,sistemas208,sistemas209,sistemas210,sistemas211,sistemas212,sistemas213,sistemas214,sistemas215,sistemas216,sistemas217,sistemas218,sistemas219,sistemas220,sistemas221,sistemas222,sistemas223,sistemas224,sistemas225,sistemas226,sistemas227,sistemas228,sistemas229,sistemas230,sistemas231,sistemas232,sistemas233,sistemas234,sistemas235,sistemas236,sistemas237,sistemas238,sistemas239,sistemas240,sistemas241,sistemas242,sistemas243,sistemas244,sistemas245,sistemas246,sistemas247,sistemas248,sistemas249,sistemas250,sistemas251,sistemas252,sistemas253,sistemas254,sistemas255,sistemas256,sistemas257,sistemas258,sistemas259,sistemas260,sistemas261,sistemas262,sistemas263,sistemas264,sistemas265,sistemas266,sistemas267,sistemas268,sistemas269,sistemas270,sistemas271,sistemas272,sistemas273,sistemas274,sistemas275,sistemas276,sistemas277,sistemas278,sistemas279,sistemas280,sistemas281,sistemas282,sistemas283,sistemas284,sistemas285,sistemas286,sistemas287,sistemas288,sistemas289,sistemas290,sistemas291,sistemas292,sistemas293,sistemas294,sistemas295,sistemas296,sistemas297,sistemas298,sistemas299 -ScriptBlock{shutdown /s /t 0} -credential rescate
+
+x=int(input("Desde :"))
+y=int(input("Hasta :"))
+command = input("Comando: ")
+print("Invoke-Command -computerName",end=" ") 
+for i in range(x,y+1):
+	a = "0" + str(i) if i<10 else str(i)
+	print("sistemas"+a,end="," if i != y else " ")
+print(" -ScriptBlock{"+command+"} -credential rescate")
+
+
+
+
+-----------------------------------Copiar carpetas o archivos
+
+$computers=Get-Content \\Murano\Instalacion\computersSoftware.txt
+
+$source = "\\Murano\Instalacion\mantis\*"
+$destination = "c$\Bitnami\testlink-1.9.19-0\apps\testlink\htdocs\mantis\"
+
+ForEach ($COMPUTER in ($computers))
+        {if(!(Test-Connection -Cn $computer -BufferSize 16 -Count 1 -ea 0 -quiet))
+        {write-host "Cannot reach $computer its offline" -f red}
+          
+else    {
+        if ((Test-Path -Path \\$computer\$destination)){
+        TRY{
+        Copy-Item $source -Destination \\$computer\$destination -Verbose -ErrorAction Stop
+        Write-Host "Sucessfully copied on $computer" -BackgroundColor Green
+        }
+        Catch {$error[0].exception.message}
+	Write-Host "Failed copied on $computer" -BackgroundColor red
+        }
+        }
+        }
