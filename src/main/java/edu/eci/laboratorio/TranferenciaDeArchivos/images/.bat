@@ -1,4 +1,3 @@
 @echo off
-mkdir C:\Temp\Sistemas2
-echo Y|xcopy /s /b \\Sistemas02\Sistemas\Temp C:\Temp\Sistemas02 /Y
+echo D|xcopy  /s /b C:\Users\rescate\Documents\JohnDavid\fileTransfer\.git \\Sistemas48\Sistemas\Temp\.git /Y 
 exit 0

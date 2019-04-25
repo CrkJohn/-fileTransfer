@@ -1,10 +1,22 @@
 package edu.eci.laboratorio.TranferenciaDeArchivos.Presentacion;
 
+import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Computador;
+import edu.eci.laboratorio.TranferenciaDeArchivos.entites.Salon;
 import edu.eci.laboratorio.TranferenciaDeArchivos.entites.TransferenciaDeArhivosException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -13,13 +25,15 @@ import java.util.logging.Logger;
 public class InicialPanel extends javax.swing.JPanel {
 
     private TranferenciaDeArchivosGUI frame;
+    private Object[] salones;
 
     public InicialPanel(TranferenciaDeArchivosGUI aThis) {
-        
+
         this.frame = aThis;
-        
+
         initComponents();
         prepareAcciones();
+
     }
 
     /**
@@ -30,6 +44,20 @@ public class InicialPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+		ArrayList<Salon> laboratorios = null;
+		try{
+			laboratorios  = frame.ideasServices.getSalones();
+		}catch(Exception ex){
+			
+		}
+		salones = new String[laboratorios.size()+1];
+		int i = 0;
+		for (Iterator<Salon> iterator = laboratorios.iterator(); iterator.hasNext();) {
+            Salon next = iterator.next();
+            salones[i] = next.getNombre();
+			System.out.println(salones[i]);
+			i++;
+        }
 
         enviar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -38,6 +66,7 @@ public class InicialPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        elimininarTemp = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(950, 401));
@@ -73,10 +102,23 @@ public class InicialPanel extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(153, 0, 0));
         jLabel5.setText("Ingeniería de sistemas - Laboratorio de sistemas");
 
+        elimininarTemp.setBackground(new java.awt.Color(204, 0, 0));
+        elimininarTemp.setForeground(new java.awt.Color(255, 255, 255));
+        elimininarTemp.setText("Eliminar temporales");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel5)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -91,17 +133,11 @@ public class InicialPanel extends javax.swing.JPanel {
                                 .addComponent(recibir, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addComponent(elimininarTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel5)))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +160,9 @@ public class InicialPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(84, 84, 84)
+                .addGap(18, 18, 18)
+                .addComponent(elimininarTemp)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -136,6 +174,7 @@ public class InicialPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton elimininarTemp;
     private javax.swing.JButton enviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -157,6 +196,21 @@ public class InicialPanel extends javax.swing.JPanel {
         };
         recibir.addActionListener(recibirAccion);
 
+        ActionListener eliminarTemporalesAccion = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    eliminarTemporales();
+                } catch (TransferenciaDeArhivosException ex) {
+                    Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        };
+
+        elimininarTemp.addActionListener(eliminarTemporalesAccion);
+
         ActionListener enviarAccion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -166,8 +220,48 @@ public class InicialPanel extends javax.swing.JPanel {
                 }
             }
         };
-        
+
         enviar.addActionListener(enviarAccion);
+    }
+
+    private void eliminarTemporales() throws IOException, TransferenciaDeArhivosException {
+
+        //JDialog.setDefaultLookAndFeelDecorated(true);
+        
+        String selection = (String) JOptionPane.showInputDialog(null, "A que salon desea borrar los temporales?",
+                "Salones :", JOptionPane.QUESTION_MESSAGE, null, salones, "B0");
+        System.err.println(selection);
+         String command = "powershell.exe  Invoke-Command -computerName ";
+        try {		
+            Salon salones = frame.ideasServices.getSalonNombre(selection);
+            for(Computador s :salones.getPcs()){
+                command+=(s.getNombre()+",");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        command +=" -ScriptBlock{msg * 'this pc turn off 1min'} -credential rescate";
+        // Executing the command
+        System.out.println(command);
+        Process powerShellProcess = Runtime.getRuntime().exec(command);
+        // Getting the results
+        powerShellProcess.getOutputStream().close();
+        String line;
+        System.err.println("Standard Output:");
+        BufferedReader stdout = new BufferedReader(new InputStreamReader(powerShellProcess.getInputStream()));
+        while ((line = stdout.readLine()) != null) {
+            System.err.println(line);
+        }
+        stdout.close();
+        System.err.println("Standard Error:");
+        BufferedReader stderr = new BufferedReader(new InputStreamReader(powerShellProcess.getErrorStream()));
+        while ((line = stderr.readLine()) != null) {
+            System.err.println(line);
+        }
+        stderr.close();
+        System.err.println("Done");
     }
 
     private void enviar() throws TransferenciaDeArhivosException {
