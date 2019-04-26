@@ -13,4 +13,4 @@ for the_file in os.listdir(folder):
             shutil.rmtree(file_path)
     except Exception as e:
         print(e)
-    print("Jajajajjaja")
+
