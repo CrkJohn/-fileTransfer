@@ -234,15 +234,18 @@ public class InicialPanel extends javax.swing.JPanel {
          String command = "powershell.exe  Invoke-Command -computerName ";
         try {		
             Salon salones = frame.ideasServices.getSalonNombre(selection);
-            for(Computador s :salones.getPcs()){
+            ArrayList<Computador> pcs = salones.getPcs();  
+            int cntSalones =  pcs.size();
+            for(int i = 0 ; i < cntSalones-1 ; i++){
+                Computador s = pcs.get(i);
                 command+=(s.getNombre()+",");
             }
+            command +=(pcs.get(cntSalones-1).getNombre());
         } catch (SQLException ex) {
             Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
-        command +=" -ScriptBlock{msg * 'this pc turn off 1min'} -credential rescate";
+        
+        command +=" -ScriptBlock{msg * '=#'} -credential rescate  -Timeout 60";
         // Executing the command
         System.out.println(command);
         Process powerShellProcess = Runtime.getRuntime().exec(command);
@@ -262,6 +265,29 @@ public class InicialPanel extends javax.swing.JPanel {
         }
         stderr.close();
         System.err.println("Done");
+    }
+    
+    
+    private String getCommand(){
+        String command = " $computers=Get-Content \\Murano\\Instalacion\\computers.txt"+
+        "$source = " +
+        "$destination = " + 
+        "ForEach ($COMPUTER in ($computers)){ " + 
+                "if(!(Test-Connection -Cn $computer  -Count 1 -ea 0 -quiet)){ " +
+                     "   write-host 'Cannot reach $computer its offline' -f red " +
+                "} " +
+                "else{ " +
+                    "TRY{ " +
+                       " Invoke-Command -computerName sistemas73 -ScriptBlock{msg * ':)'}  " +
+                       " Write-Host 'Sucessfully copied on $computer' -BackgroundColor Green " +
+                   " }Catch{ " +
+                   "      $error[0].exception.message   "   +
+                   " Write-Host 'Failed copied on $computer' -BackgroundColor red " +
+                   " } " +   	
+                " } " +
+       " }";
+        return command;
+        
     }
 
     private void enviar() throws TransferenciaDeArhivosException {
