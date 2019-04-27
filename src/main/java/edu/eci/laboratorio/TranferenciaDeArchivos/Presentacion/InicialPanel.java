@@ -55,7 +55,7 @@ public class InicialPanel extends javax.swing.JPanel {
 		for (Iterator<Salon> iterator = laboratorios.iterator(); iterator.hasNext();) {
             Salon next = iterator.next();
             salones[i] = next.getNombre();
-			System.out.println(salones[i]);
+	//		System.out.println(salones[i]);
 			i++;
         }
 

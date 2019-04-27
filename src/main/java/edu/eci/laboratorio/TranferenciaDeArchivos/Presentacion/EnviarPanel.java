@@ -253,17 +253,17 @@ public class EnviarPanel extends javax.swing.JPanel {
                     ,JOptionPane.ERROR_MESSAGE);
   
             }else if(urlArchivo.equals("")){
-                System.out.println("Entreamos");
+//                System.out.println("Entreamos");
                 String salon = jComboBox2.getSelectedItem().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
                 Date now = new Date();
                 String strDate = sdf.format(now);                
-                System.out.println(strDate);
+//                System.out.println(strDate);
                 strDate = strDate.replaceAll("-","");              
                 strDate = strDate.replaceAll(".","");  
                 strDate = strDate.replaceAll(" ","");              
                 strDate = strDate.replaceAll(":","");
-                System.out.println(strDate);
+//                System.out.println(strDate);
                 String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
                 PrintWriter writer = new PrintWriter(url, "UTF-8"); 
 		writer.println("@echo off");
@@ -288,7 +288,7 @@ public class EnviarPanel extends javax.swing.JPanel {
                     Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                System.out.println("Entre");
+//                System.out.println("Entre");
             }
       }
   

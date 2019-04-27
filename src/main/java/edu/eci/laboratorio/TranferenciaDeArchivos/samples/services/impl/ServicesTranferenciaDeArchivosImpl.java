@@ -44,7 +44,6 @@ public class ServicesTranferenciaDeArchivosImpl implements ServicesIdeas {
     public ArrayList<Salon> getSalones() {
         
         try {
-            System.err.println(salonDAO==null);
             return salonDAO.getSalones();
         } catch (Exception ex) {
             ex.getStackTrace();

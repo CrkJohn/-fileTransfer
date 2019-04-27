@@ -251,7 +251,7 @@ public class RecibirPanel extends JPanel {
             }else{
                 tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas%d\\Sistemas\\Temp C:\\Temp\\Sistemas%d /Y",numeroComputador,numeroComputador);
             }
-            System.out.println(tmp2);
+//            System.out.println(tmp2);
             writer.println(tmp2);		
             writer.println(tmp);		
             writer.println("exit 0");
@@ -295,7 +295,7 @@ public class RecibirPanel extends JPanel {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
                 Date now = new Date();
                 String strDate = sdf.format(now);                
-                System.out.println(strDate);
+//                System.out.println(strDate);
                 strDate = strDate.replaceAll("-","");              
                 strDate = strDate.replaceAll(".","");  
                 strDate = strDate.replaceAll(" ","");              
