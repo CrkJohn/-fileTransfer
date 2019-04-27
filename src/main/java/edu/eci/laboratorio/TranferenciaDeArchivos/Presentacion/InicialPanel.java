@@ -231,25 +231,23 @@ public class InicialPanel extends javax.swing.JPanel {
         String selection = (String) JOptionPane.showInputDialog(null, "A que salon desea borrar los temporales?",
                 "Salones :", JOptionPane.QUESTION_MESSAGE, null, salones, "B0");
         System.err.println(selection);
-         String command = "powershell.exe  Invoke-Command -computerName ";
+        String commandPcs = "@(";
         try {		
             Salon salones = frame.ideasServices.getSalonNombre(selection);
             ArrayList<Computador> pcs = salones.getPcs();  
             int cntSalones =  pcs.size();
             for(int i = 0 ; i < cntSalones-1 ; i++){
                 Computador s = pcs.get(i);
-                command+=(s.getNombre()+",");
+                commandPcs+=("'"+s.getNombre()+"',");
             }
-            command +=(pcs.get(cntSalones-1).getNombre());
+            commandPcs +=("'"+pcs.get(cntSalones-1).getNombre()+"')");
         } catch (SQLException ex) {
             Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        command +=" -ScriptBlock{msg * '=#'} -credential rescate  -Timeout 60";
-        // Executing the command
+        String command = getCommand(commandPcs);
         System.out.println(command);
         Process powerShellProcess = Runtime.getRuntime().exec(command);
-        // Getting the results
         powerShellProcess.getOutputStream().close();
         String line;
         System.err.println("Standard Output:");
@@ -268,25 +266,24 @@ public class InicialPanel extends javax.swing.JPanel {
     }
     
     
-    private String getCommand(){
-        String command = " $computers=Get-Content \\Murano\\Instalacion\\computers.txt"+
-        "$source = " +
-        "$destination = " + 
-        "ForEach ($COMPUTER in ($computers)){ " + 
-                "if(!(Test-Connection -Cn $computer  -Count 1 -ea 0 -quiet)){ " +
-                     "   write-host 'Cannot reach $computer its offline' -f red " +
-                "} " +
-                "else{ " +
-                    "TRY{ " +
-                       " Invoke-Command -computerName sistemas73 -ScriptBlock{msg * ':)'}  " +
-                       " Write-Host 'Sucessfully copied on $computer' -BackgroundColor Green " +
-                   " }Catch{ " +
-                   "      $error[0].exception.message   "   +
-                   " Write-Host 'Failed copied on $computer' -BackgroundColor red " +
-                   " } " +   	
-                " } " +
-       " }";
-        return command;
+    private String getCommand(String pcs){
+        String command = "powershell.exe \n"+ 
+          "$computers= "+pcs + ";\n" +
+          "ForEach ($COMPUTER in ($computers)){ " + "\n" + 
+                    "if(!(Test-Connection -Cn $computer  -Count 1 -ea 0 -quiet)){ " +"\n" + 
+                         "Write-host "+ '"'+"Cannot reach $computer its offline"+'"'+"\n" +
+                    "} " + "\n" +
+                    "else{ " +  "\n" +
+                        "TRY{ " + "\n" +
+                           " Invoke-Command -computerName $computer -ScriptBlock{py C:\\Temp\\l4b3c1.py}; " + "\n" +
+                           " Write-Host "+'"'+ "Sucessfully copied on $computer "+'"'+"\n" +
+                       " }Catch{ " + "\n" + 
+                       "      $error[0].exception.message;   "   + "\n" +
+                       "      Write-Host " + '"' + "Failed copied on $computer" + '"'+ "\n" +
+                       " } " +   	"\n" +
+                    " } " + "\n" + 
+           " }";
+        return command ;
         
     }
 
