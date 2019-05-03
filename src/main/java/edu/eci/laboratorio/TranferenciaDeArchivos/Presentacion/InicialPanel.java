@@ -267,6 +267,8 @@ public class InicialPanel extends javax.swing.JPanel {
     
     
     private String getCommand(String pcs){
+        //    " Invoke-Command -computerName $computer -ScriptBlock{py C:\\Temp\\l4b3c1.py}; " + "\n" +
+                       
         String command = "powershell.exe \n"+ 
           "$computers= "+pcs + ";\n" +
           "ForEach ($COMPUTER in ($computers)){ " + "\n" + 
@@ -275,15 +277,14 @@ public class InicialPanel extends javax.swing.JPanel {
                     "} " + "\n" +
                     "else{ " +  "\n" +
                         "TRY{ " + "\n" +
-                           " Invoke-Command -computerName $computer -ScriptBlock{py C:\\Temp\\l4b3c1.py}; " + "\n" +
-                           " Write-Host "+'"'+ "Sucessfully copied on $computer "+'"'+"\n" +
+                           "Remove-Item "+ '"'+"\\\\$computer\\c$\\Temp\\*"+'"'+" -Force\n"+
                        " }Catch{ " + "\n" + 
                        "      $error[0].exception.message;   "   + "\n" +
                        "      Write-Host " + '"' + "Failed copied on $computer" + '"'+ "\n" +
                        " } " +   	"\n" +
                     " } " + "\n" + 
            " }";
-        return command ;
+        return command;
         
     }
 
