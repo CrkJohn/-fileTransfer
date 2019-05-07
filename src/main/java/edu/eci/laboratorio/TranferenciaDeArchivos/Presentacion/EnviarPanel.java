@@ -269,13 +269,14 @@ public class EnviarPanel extends javax.swing.JPanel {
 		writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 String []chars = urlCarpeta.split("\\\\");             
-                String nombreCarpeta = chars[chars.length-1];
+                String nombreCarpeta = chars[chars.length-1].replace(" ","");
+                System.out.println(nombreCarpeta);
                 for(Computador c : salones.getPcs()){
                         String tmp;
                         if(c.getId()<10){
-                            tmp = String.format("echo D|xcopy /s /b %s \\\\Sistemas0%d\\Sistemas\\Temp\\%s /Y",urlCarpeta,c.getId(),nombreCarpeta);                          
+                            tmp = String.format("echo D|xcopy /s /b "+'"'+"%s"+'"'+" \\\\Sistemas0%d\\Sistemas\\Temp\\%s /Y",urlCarpeta,c.getId(),nombreCarpeta);                          
                         }else{
-                            tmp = String.format("echo D|xcopy  /s /b %s \\\\%s\\Sistemas\\Temp\\%s /Y ",urlCarpeta,c.getNombre(),nombreCarpeta);                           
+                            tmp = String.format("echo D|xcopy  /s /b "+'"'+"%s"+'"'+" \\\\%s\\Sistemas\\Temp\\%s /Y ",urlCarpeta,c.getNombre(),nombreCarpeta);                           
                         }
                         writer.println(tmp);	
                 }
