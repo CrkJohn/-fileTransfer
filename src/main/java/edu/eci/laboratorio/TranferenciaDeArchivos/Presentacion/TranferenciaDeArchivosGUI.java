@@ -46,7 +46,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		setLocationRelativeTo(null);
 		add(principal);
 		panelTranferencia =  new InicialPanel(this);	
-                recibirPanel = new RecibirPanel(this);
+               recibirPanel = new RecibirPanel(this);
                 enviarPanel = new EnviarPanel(this);                
 		principal.add(panelTranferencia,"Principal");	                
 		principal.add(enviarPanel,"Enviar");	

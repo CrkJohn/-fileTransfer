@@ -44,6 +44,7 @@ public class ServicesTranferenciaDeArchivosImpl implements ServicesIdeas {
     public ArrayList<Salon> getSalones() {
         
         try {
+
             return salonDAO.getSalones();
         } catch (Exception ex) {
             ex.getStackTrace();

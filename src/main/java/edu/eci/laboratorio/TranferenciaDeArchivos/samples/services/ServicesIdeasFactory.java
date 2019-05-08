@@ -26,7 +26,7 @@ public class ServicesIdeasFactory {
     	  injector = createInjector(new XMLMyBatisModule() {
               @Override
               protected void initialize() {
-                  install(JdbcHelper.PostgreSQL);                        
+                  install(JdbcHelper.MySQL); 
                   setClassPathResource("mybatis-config.xml");         
                   bind(ComputadorDAO.class).to(MyBATISComputadorDAO.class);
                   bind(SalonDAO.class).to(MyBATISSalonDAO.class); 

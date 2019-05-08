@@ -30,7 +30,11 @@ public class InicialPanel extends javax.swing.JPanel {
     public InicialPanel(TranferenciaDeArchivosGUI aThis) {
 
         this.frame = aThis;
-
+        try {
+            System.out.println(frame.ideasServices.getSalones());
+        } catch (SQLException ex) {
+            Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         prepareAcciones();
 
@@ -50,6 +54,7 @@ public class InicialPanel extends javax.swing.JPanel {
 		}catch(Exception ex){
 			
 		}
+		System.out.println("aca ");
 		salones = new String[laboratorios.size()+1];
 		int i = 0;
 		for (Iterator<Salon> iterator = laboratorios.iterator(); iterator.hasNext();) {

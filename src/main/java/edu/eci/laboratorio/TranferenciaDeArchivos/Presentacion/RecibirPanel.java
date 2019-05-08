@@ -279,8 +279,8 @@ public class RecibirPanel extends JPanel {
                 strDate = strDate.replaceAll(".","");  
                 strDate = strDate.replaceAll(" ","");              
                 strDate = strDate.replaceAll(":","");            
-                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";                                
-		 Salon salones = frame.ideasServices.getSalonNombre(salon);		
+                String url = "bats\\"+strDate+".bat";                                
+                Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 int numeroComputador = Integer.parseInt(inputComputador.getText().toString());
                 boolean existPCinSa = existPC(salones,numeroComputador);
                 if(existPCinSa){
@@ -300,9 +300,9 @@ public class RecibirPanel extends JPanel {
                 strDate = strDate.replaceAll(".","");  
                 strDate = strDate.replaceAll(" ","");              
                 strDate = strDate.replaceAll(":","");               
-                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
+                String url = "bats\\"+strDate+".bat";
                 PrintWriter writer = new PrintWriter(url, "UTF-8");	                
-		writer.println("@echo off");
+                writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 //String = copy /b C:\Users\rescate\Documents\CarpetaPRUEB\jaja.txt \\SISTEMAS70\Sistemas\Temp
                 for(Computador c : salones.getPcs()){

@@ -264,9 +264,9 @@ public class EnviarPanel extends javax.swing.JPanel {
                 strDate = strDate.replaceAll(" ","");              
                 strDate = strDate.replaceAll(":","");
 //                System.out.println(strDate);
-                String url = "src\\main\\java\\edu\\eci\\laboratorio\\TranferenciaDeArchivos\\images\\"+strDate+".bat";
-                PrintWriter writer = new PrintWriter(url, "UTF-8"); 
-		writer.println("@echo off");
+                String url = "script\\"+strDate+".bat";
+                PrintWriter writer = new PrintWriter("UTF-8"); 
+                writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 String []chars = urlCarpeta.split("\\\\");             
                 String nombreCarpeta = chars[chars.length-1].replace(" ","");
