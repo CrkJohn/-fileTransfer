@@ -282,7 +282,7 @@ public class InicialPanel extends javax.swing.JPanel {
                     "} " + "\n" +
                     "else{ " +  "\n" +
                         "TRY{ " + "\n" +
-                           "Remove-Item "+ '"'+"\\\\$computer\\c$\\Temp\\*"+'"'+" -Force\n"+
+                           "Remove-Item "+ '"'+"\\\\$computer\\c$\\Temp\\*"+'"'+" -Recurse -Confirm:$false -Force\n"+
                        " }Catch{ " + "\n" + 
                        "      $error[0].exception.message;   "   + "\n" +
                        "      Write-Host " + '"' + "Failed copied on $computer" + '"'+ "\n" +

@@ -55,7 +55,7 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		setResizable(false);
 		IniciarTA();
 		setFocusable(false);
-                setIconImage(new ImageIcon("src\\main\\resources\\Imagenes\\icon.png").getImage());	
+                setIconImage(new ImageIcon("\\Imagenes\\icon.png").getImage());	
 	}
 	
 	private void centro() {

@@ -247,7 +247,7 @@ public class EnviarPanel extends javax.swing.JPanel {
         }
     }
     
-    private void EnviarAccionMe() throws FileNotFoundException, UnsupportedEncodingException, SQLException {
+     private void EnviarAccionMe() throws FileNotFoundException, UnsupportedEncodingException, SQLException {
             if(urlArchivo.equals("") && urlCarpeta.equals("") ){          
              JOptionPane.showMessageDialog(null,"No a escogido ni archivo ni carpeta a enviar","ERROR"
                     ,JOptionPane.ERROR_MESSAGE);
@@ -265,12 +265,12 @@ public class EnviarPanel extends javax.swing.JPanel {
                 strDate = strDate.replaceAll(":","");
 //                System.out.println(strDate);
                 String url = "script\\"+strDate+".bat";
-                PrintWriter writer = new PrintWriter("UTF-8"); 
-                writer.println("@echo off");
+                PrintWriter writer = new PrintWriter(url, "UTF-8"); 
+		writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 String []chars = urlCarpeta.split("\\\\");             
                 String nombreCarpeta = chars[chars.length-1].replace(" ","");
-                System.out.println(nombreCarpeta);
+                
                 for(Computador c : salones.getPcs()){
                         String tmp;
                         if(c.getId()<10){
