@@ -279,7 +279,7 @@ public class RecibirPanel extends JPanel {
                 strDate = strDate.replaceAll(".","");  
                 strDate = strDate.replaceAll(" ","");              
                 strDate = strDate.replaceAll(":","");            
-                String url = "bats\\"+strDate+".bat";                                
+                String url = "script\\"+strDate+".bat";                                
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
                 int numeroComputador = Integer.parseInt(inputComputador.getText().toString());
                 boolean existPCinSa = existPC(salones,numeroComputador);
@@ -300,7 +300,7 @@ public class RecibirPanel extends JPanel {
                 strDate = strDate.replaceAll(".","");  
                 strDate = strDate.replaceAll(" ","");              
                 strDate = strDate.replaceAll(":","");               
-                String url = "bats\\"+strDate+".bat";
+                String url = "script\\"+strDate+".bat";
                 PrintWriter writer = new PrintWriter(url, "UTF-8");	                
                 writer.println("@echo off");
                 Salon salones = frame.ideasServices.getSalonNombre(salon);		
