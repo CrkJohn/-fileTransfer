@@ -230,11 +230,14 @@ public class InicialPanel extends javax.swing.JPanel {
     }
 
     private void eliminarTemporales() throws IOException, TransferenciaDeArhivosException {
-
+        if (JOptionPane.showConfirmDialog(null, "¿Desea ir a la sección de borrado de temporales?", "Confirmación",
+				JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) {
+            return;
+		}
         //JDialog.setDefaultLookAndFeelDecorated(true);
         
-        String selection = (String) JOptionPane.showInputDialog(null, "A que salon desea borrar los temporales?",
-                "Salones :", JOptionPane.QUESTION_MESSAGE, null, salones, "B0");
+        String selection = (String) JOptionPane.showInputDialog(null, "¿A que salon desea borrar los temporales?",
+            "Salones :", JOptionPane.QUESTION_MESSAGE, null, salones, "B0");
         System.err.println(selection);
         String commandPcs = "@(";
         try {		
@@ -248,6 +251,8 @@ public class InicialPanel extends javax.swing.JPanel {
             commandPcs +=("'"+pcs.get(cntSalones-1).getNombre()+"')");
         } catch (SQLException ex) {
             Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(Exception e){
+            System.out.println("Cancelado");
         }
         
         String command = getCommand(commandPcs);
