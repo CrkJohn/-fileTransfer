@@ -231,14 +231,11 @@ public class InicialPanel extends javax.swing.JPanel {
 
     private void eliminarTemporales() throws IOException, TransferenciaDeArhivosException {
         try {
-            BorrarPanel br = new BorrarPanel(frame);
-            br.setVisible(true);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            frame.irPanel("Borrar");
+        } catch (TransferenciaDeArhivosException ex) {
+            throw new TransferenciaDeArhivosException(TransferenciaDeArhivosException.ERROR);
         }
-
-        /**
+        /*
         if (JOptionPane.showConfirmDialog(null, "¿Desea ir a la sección de borrado de temporales?", "Confirmación",
 				JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) {
             return;
@@ -282,7 +279,7 @@ public class InicialPanel extends javax.swing.JPanel {
         }
         stderr.close();
         System.err.println("Done");
-        **/
+        */
     }
     
     

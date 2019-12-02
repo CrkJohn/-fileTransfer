@@ -23,7 +23,8 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 	private JPanel principal;
 	private InicialPanel  panelInicial;
         private EnviarPanel enviarPanel;
-        private RecibirPanel recibirPanel;
+		private RecibirPanel recibirPanel;
+		private BorrarPanel borrarPanel;
 	private InicialPanel panelTranferencia;
         private final ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
         public ServicesIdeas ideasServices;
@@ -47,10 +48,12 @@ public class TranferenciaDeArchivosGUI extends JFrame{
 		add(principal);
 		panelTranferencia =  new InicialPanel(this);	
                recibirPanel = new RecibirPanel(this);
-                enviarPanel = new EnviarPanel(this);                
+				enviarPanel = new EnviarPanel(this);
+				borrarPanel = new BorrarPanel(this);                
 		principal.add(panelTranferencia,"Principal");	                
 		principal.add(enviarPanel,"Enviar");	
 		principal.add(recibirPanel,"Recibir");	
+		principal.add(borrarPanel,"Borrar");
 		centro();
 		setResizable(false);
 		IniciarTA();
