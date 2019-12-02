@@ -59,7 +59,7 @@ public class BorrarPanel extends JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        eliminarPCS.setText("Borar");
+        eliminarPCS.setText("Borrar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
