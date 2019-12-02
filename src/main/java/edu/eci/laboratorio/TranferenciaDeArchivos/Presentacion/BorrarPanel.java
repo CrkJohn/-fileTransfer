@@ -258,8 +258,10 @@ public class BorrarPanel extends JPanel {
 
                 }
             }
-            // Control de la ultima ,
+            // Control de la ultima string de equipos
             commandPCs.deleteCharAt(commandPCs.length() - 1);
+            commandPCs.append(")");
+            // Final del control
             String commandPcs = commandPCs.toString();
             System.out.println(commandPcs);
             String command = getCommand(commandPcs);
