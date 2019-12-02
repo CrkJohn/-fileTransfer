@@ -148,7 +148,8 @@ public class BorrarPanel extends JPanel {
                                 .addComponent(jLabel4).addComponent(jLabel7)
                                 .addComponent(inputComputador, javax.swing.GroupLayout.PREFERRED_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(eliminarDePc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(eliminarDePc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6).addGap(22, 22, 22))
@@ -211,6 +212,11 @@ public class BorrarPanel extends JPanel {
         eliminarPCS.addActionListener(eliminarSalones);
         ActionListener eliminarDePcAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                if (inputComputador.getText().length() == 0) {
+                    JOptionPane.showMessageDialog(null, "No ha ingresado ningún computador.", "Advertencia",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 try {
                     eliminarDePcMetodo();
                 } catch (FileNotFoundException ex) {
@@ -233,76 +239,70 @@ public class BorrarPanel extends JPanel {
         return false;
     }
 
-    private void batPc(String url, int numeroComputador) {
+    // Teoricamente permite mas de un pc, sin embargo no se ha finalizado la
+    // implementación.
+    private void eliminarDePcMetodo() throws FileNotFoundException, UnsupportedEncodingException, SQLException {
+        String salonNombre = jComboBox2.getSelectedItem().toString();
+        Salon salon = frame.ideasServices.getSalonNombre(salonNombre);
+        StringBuilder commandPCs = new StringBuilder("@(");
         try {
-            PrintWriter writer = new PrintWriter(url, "UTF-8");
-            writer.println("@echo off");
-            String tmp2 = String.format("mkdir C:\\Temp\\Sistemas%d", numeroComputador);
-            String tmp = "";
-            if (numeroComputador < 10) {
-                tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas0%d\\Sistemas\\Temp C:\\Temp\\Sistemas0%d /Y",
-                        numeroComputador, numeroComputador);
-            } else {
-                tmp = String.format("echo Y|xcopy /s /b \\\\Sistemas%d\\Sistemas\\Temp C:\\Temp\\Sistemas%d /Y",
-                        numeroComputador, numeroComputador);
-            }
-            // System.out.println(tmp2);
-            writer.println(tmp2);
-            writer.println(tmp);
-            writer.println("exit 0");
-            writer.close();
-            Runtime rt = Runtime.getRuntime();
-            rt.exec("cmd /c start " + url + " ");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BorrarPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(BorrarPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"problemas al transferir el archivo","ERROR",JOptionPane.ERROR_MESSAGE);   
-            Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-        
-    
-    private void eliminarDePcMetodo()  throws FileNotFoundException, UnsupportedEncodingException, SQLException {
-                String salon = jComboBox2.getSelectedItem().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-                Date now = new Date();
-                String strDate = sdf.format(now);           
-                strDate = strDate.replaceAll("-","");              
-                strDate = strDate.replaceAll(".","");  
-                strDate = strDate.replaceAll(" ","");              
-                strDate = strDate.replaceAll(":","");            
-                String url = "script\\"+strDate+".bat";                                
-                Salon salones = frame.ideasServices.getSalonNombre(salon);		
-                int numeroComputador = Integer.parseInt(inputComputador.getText().toString());
-                boolean existPCinSa = existPC(salones,numeroComputador);
-                if(existPCinSa){
-                    batPc(url,numeroComputador);
-                }else{
-                    JOptionPane.showMessageDialog(null,"El computador no corresponde al salon","ERROR", JOptionPane.ERROR_MESSAGE);
+            String[] computadores = inputComputador.getText().split(",");
+            for (String pc : computadores) {
+                int id_pc = Integer.parseInt(pc);
+                if (existPC(salon, id_pc)) {
+                    if (id_pc < 10) {
+                        commandPCs.append("'Sistemas0" + id_pc + "',");
+                    } else {
+                        commandPCs.append("'Sistemas" + id_pc + "',");
+                    }
+
                 }
-    }
-    
-    private void eliminarPCSMetodo() throws IOException, TransferenciaDeArhivosException  {
-        String salon = jComboBox1.getSelectedItem().toString();
-        String commandPcs = "@(";
-        try {		
-            Salon salones = frame.ideasServices.getSalonNombre(salon);
-            ArrayList<Computador> pcs = salones.getPcs();  
-            int cntSalones =  pcs.size();
-            for(int i = 0 ; i < cntSalones-1 ; i++){
-                Computador s = pcs.get(i);
-                commandPcs+=("'"+s.getNombre()+"',");
             }
-            commandPcs +=("'"+pcs.get(cntSalones-1).getNombre()+"')");
-        } catch (SQLException ex) {
-            Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch(Exception e){
+            // Control de la ultima ,
+            commandPCs.deleteCharAt(commandPCs.length() - 1);
+            String commandPcs = commandPCs.toString();
+            System.out.println(commandPcs);
+            String command = getCommand(commandPcs);
+            System.out.println(command);
+            Process powerShellProcess = Runtime.getRuntime().exec(command);
+            powerShellProcess.getOutputStream().close();
+            String line;
+            System.err.println("Standard Output:");
+            BufferedReader stdout = new BufferedReader(new InputStreamReader(powerShellProcess.getInputStream()));
+            while ((line = stdout.readLine()) != null) {
+                System.err.println(line);
+            }
+            stdout.close();
+            System.err.println("Standard Error:");
+            BufferedReader stderr = new BufferedReader(new InputStreamReader(powerShellProcess.getErrorStream()));
+            while ((line = stderr.readLine()) != null) {
+                System.err.println(line);
+            }
+            stderr.close();
+            System.err.println("Done");
+        } catch (Exception e) {
             System.out.println("Cancelado");
         }
-        
+    }
+
+    private void eliminarPCSMetodo() throws IOException, TransferenciaDeArhivosException {
+        String salon = jComboBox1.getSelectedItem().toString();
+        String commandPcs = "@(";
+        try {
+            Salon salones = frame.ideasServices.getSalonNombre(salon);
+            ArrayList<Computador> pcs = salones.getPcs();
+            int cntSalones = pcs.size();
+            for (int i = 0; i < cntSalones - 1; i++) {
+                Computador s = pcs.get(i);
+                commandPcs += ("'" + s.getNombre() + "',");
+            }
+            commandPcs += ("'" + pcs.get(cntSalones - 1).getNombre() + "')");
+        } catch (SQLException ex) {
+            Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.out.println("Cancelado");
+        }
+
         String command = getCommand(commandPcs);
         System.out.println(command);
         Process powerShellProcess = Runtime.getRuntime().exec(command);
@@ -320,38 +320,28 @@ public class BorrarPanel extends JPanel {
             System.err.println(line);
         }
         stderr.close();
-        System.err.println("Done");            
+        System.err.println("Done");
     }
 
+    private String getCommand(String pcs) {
+        // " Invoke-Command -computerName $computer -ScriptBlock{py
+        // C:\\Temp\\l4b3c1.py}; " + "\n" +
 
-
-    private String getCommand(String pcs){
-        //    " Invoke-Command -computerName $computer -ScriptBlock{py C:\\Temp\\l4b3c1.py}; " + "\n" +
-                       
-        String command = "powershell.exe \n"+ 
-          "$computers= "+pcs + ";\n" +
-          "ForEach ($COMPUTER in ($computers)){ " + "\n" + 
-                    "if(!(Test-Connection -Cn $computer  -Count 1 -ea 0 -quiet)){ " +"\n" + 
-                         "Write-host "+ '"'+"Cannot reach $computer its offline"+'"'+"\n" +
-                    "} " + "\n" +
-                    "else{ " +  "\n" +
-                        "TRY{ " + "\n" +
-                           "Remove-Item "+ '"'+"\\\\$computer\\c$\\Temp\\*"+'"'+" -Recurse -Confirm:$false -Force\n"+
-                       " }Catch{ " + "\n" + 
-                       "      $error[0].exception.message;   "   + "\n" +
-                       "      Write-Host " + '"' + "Failed copied on $computer" + '"'+ "\n" +
-                       " } " +   	"\n" +
-                    " } " + "\n" + 
-           " }";
+        String command = "powershell.exe \n" + "$computers= " + pcs + ";\n" + "ForEach ($COMPUTER in ($computers)){ "
+                + "\n" + "if(!(Test-Connection -Cn $computer  -Count 1 -ea 0 -quiet)){ " + "\n" + "Write-host " + '"'
+                + "Cannot reach $computer its offline" + '"' + "\n" + "} " + "\n" + "else{ " + "\n" + "TRY{ " + "\n"
+                + "Remove-Item " + '"' + "\\\\$computer\\c$\\Temp\\*" + '"' + " -Recurse -Confirm:$false -Force\n"
+                + " }Catch{ " + "\n" + "      $error[0].exception.message;   " + "\n" + "      Write-Host " + '"'
+                + "Failed copied on $computer" + '"' + "\n" + " } " + "\n" + " } " + "\n" + " }";
         return command;
-        
+
     }
-    
+
     private void regresarMetodo() {
         try {
             frame.irPanel("Principal");
         } catch (TransferenciaDeArhivosException ex) {
             Logger.getLogger(EnviarPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }  
+    }
 }
