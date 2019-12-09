@@ -199,7 +199,14 @@ public class BorrarPanel extends JPanel {
         ActionListener eliminarSalones = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    eliminarPCSMetodo();
+                    // Confirmación para evitar borrado no intencional.                    
+                    int ans = JOptionPane.showConfirmDialog(null, "¿Seguro de borrar?", "Confirmación",
+                            JOptionPane.YES_NO_OPTION);
+                    if(ans==JOptionPane.NO_OPTION){
+                        return;
+                    }else{
+                        eliminarPCSMetodo();
+                    }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BorrarPanel.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnsupportedEncodingException ex) {
@@ -212,13 +219,21 @@ public class BorrarPanel extends JPanel {
         eliminarPCS.addActionListener(eliminarSalones);
         ActionListener eliminarDePcAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Confirmación para ausencia de computador objetivo.
                 if (inputComputador.getText().length() == 0) {
                     JOptionPane.showMessageDialog(null, "No ha ingresado ningún computador.", "Advertencia",
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 try {
-                    eliminarDePcMetodo();
+                    // Confirmación para evitar borrado no intencional
+                    int ans = JOptionPane.showConfirmDialog(null, "¿Seguro de borrar?", "Confirmación",
+                            JOptionPane.YES_NO_OPTION);
+                    if(ans==JOptionPane.NO_OPTION){
+                        return;
+                    }else{
+                        eliminarDePcMetodo();
+                    }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BorrarPanel.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnsupportedEncodingException ex) {
