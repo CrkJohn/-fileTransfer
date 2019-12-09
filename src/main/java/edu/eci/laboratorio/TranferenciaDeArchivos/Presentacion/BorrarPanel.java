@@ -347,7 +347,8 @@ public class BorrarPanel extends JPanel {
         String command = "powershell.exe \n" + "$computers= " + pcs + ";\n" + "ForEach ($COMPUTER in ($computers)){ "
                 + "\n" + "if(!(Test-Connection -Cn $computer  -Count 1 -ea 0 -quiet)){ " + "\n" + "Write-host " + '"'
                 + "Cannot reach $computer its offline" + '"' + "\n" + "} " + "\n" + "else{ " + "\n" + "TRY{ " + "\n"
-                + "Remove-Item " + '"' + "\\\\$computer\\c$\\Temp\\*" + '"' + " -Recurse -Confirm:$false -Force\n"
+                + "Remove-Item " + '"' + "\\\\$computer\\c$\\Temp\\*" + '"' + " -Recurse -Confirm:$false -Force;\n"
+                + "Write-host "+ '"' + "Successfully $computer" + '"' + "\n"
                 + " }Catch{ " + "\n" + "      $error[0].exception.message;   " + "\n" + "      Write-Host " + '"'
                 + "Failed copied on $computer" + '"' + "\n" + " } " + "\n" + " } " + "\n" + " }";
         return command;
