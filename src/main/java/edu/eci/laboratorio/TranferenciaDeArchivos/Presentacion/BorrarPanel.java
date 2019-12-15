@@ -281,6 +281,7 @@ public class BorrarPanel extends JPanel {
             System.out.println(commandPcs);
             String command = getCommand(commandPcs);
             System.out.println(command);
+            JOptionPane.showMessageDialog(this, "En proceso...");
             Process powerShellProcess = Runtime.getRuntime().exec(command);
             powerShellProcess.getOutputStream().close();
             String line;
@@ -296,8 +297,10 @@ public class BorrarPanel extends JPanel {
                 System.err.println(line);
             }
             stderr.close();
+            JOptionPane.showMessageDialog(this, "Temporales eliminados con éxito");
             System.err.println("Done");
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error en el borrado de temporales");
             System.out.println("Cancelado");
         }
     }
@@ -317,11 +320,13 @@ public class BorrarPanel extends JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(InicialPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error en el borrado de temporales");
             System.out.println("Cancelado");
         }
 
         String command = getCommand(commandPcs);
         System.out.println(command);
+        JOptionPane.showMessageDialog(this, "En proceso...");
         Process powerShellProcess = Runtime.getRuntime().exec(command);
         powerShellProcess.getOutputStream().close();
         String line;
@@ -338,6 +343,7 @@ public class BorrarPanel extends JPanel {
         }
         stderr.close();
         System.err.println("Done");
+        JOptionPane.showMessageDialog(this, "Temporales eliminados con éxito");
     }
 
     private String getCommand(String pcs) {
