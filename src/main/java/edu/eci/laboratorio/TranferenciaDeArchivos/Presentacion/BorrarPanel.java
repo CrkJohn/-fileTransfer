@@ -261,7 +261,7 @@ public class BorrarPanel extends JPanel {
         Salon salon = frame.ideasServices.getSalonNombre(salonNombre);
         StringBuilder commandPCs = new StringBuilder("@(");
         try {
-            String[] computadores = inputComputador.getText().split(",");
+            String[] computadores = inputComputador.getText().split(" ");
             for (String pc : computadores) {
                 int id_pc = Integer.parseInt(pc);
                 if (existPC(salon, id_pc)) {
