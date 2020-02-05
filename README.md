@@ -25,6 +25,8 @@ Support
 Roles asignados:
 	
  - John Ibañez Rodriguez  - 	 ***Desarrollador***
+
+Para que las dependencias de maven queden dentro del ejecutable de la aplicación se tiene que poner el siguiente comando para que el jar contengan las dependencias.
 ```
  mvn clean compile assembly:single
 ```
@@ -61,6 +63,8 @@ Roles asignados:
 > XML
 
 > Batch
+
+
 
 
 
